@@ -17,7 +17,7 @@ This is a high-converting lead form widget designed specifically for embedding i
 The application is a single-page form with:
 - Self-contained HTML/CSS/JavaScript in `leadform.html` for easy copy/paste into Framer
 - Google Maps Places API integration for single-line address autocomplete
-- API Key: AIzaSyChsAghoLBZ_2uOwtOil9qhDG_tQdsDuTM
+- API Key: Set via environment variable (never commit keys to repo)
 - Formspree backend for form submission (endpoint: https://formspree.io/f/xblyrjpg)
 - Google Tag Manager (GTM) dataLayer integration for analytics and conversion tracking
 

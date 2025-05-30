@@ -89,10 +89,15 @@ This project is configured for automatic deployment to Vercel.
 ## 🔑 Configuration
 
 ### Google Maps API
-Update the API key in the script tag:
-```html
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap">
-```
+⚠️ **SECURITY**: Never commit API keys to version control!
+
+1. **Get API Key**: https://console.cloud.google.com/google/maps-apis
+2. **Restrict the key** to your domains only
+3. **Replace placeholder** in HTML files:
+   ```html
+   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places&callback=initMap">
+   ```
+4. **For Vercel**: Add `GOOGLE_MAPS_API_KEY` as environment variable
 
 ### Form Submission
 Forms submit to Formspree endpoint: `https://formspree.io/f/xblyrjpg`
