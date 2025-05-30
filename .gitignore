@@ -12,7 +12,7 @@ yarn-error.log*
 .env.production.local
 
 # API Keys and sensitive data
-config.js
+# config.js (uncomment after first deployment)
 secrets.js
 
 # IDE

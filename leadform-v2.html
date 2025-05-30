@@ -702,7 +702,7 @@
 
 <script>
 // Configuration
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xblyrjpg';
+const FORMSPREE_ENDPOINT = window.CONFIG?.FORMSPREE_ENDPOINT || 'https://formspree.io/f/xblyrjpg';
 
 // Social proof messages
 const socialProofMessages = [
@@ -1119,10 +1119,8 @@ function initMap() {
 window.initMap = initMap;
 </script>
 
-<!-- Google Maps API with Places library -->
-<script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places&callback=initMap">
-</script>
+<!-- Configuration and Google Maps API -->
+<script src="config.js"></script>
 
 </body>
 </html>
