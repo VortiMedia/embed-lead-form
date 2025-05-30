@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Your Cash Offer - High Converting Lead Form</title>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+  }
+  
+  .cash-offer-form {
+    width: 100%;
+    min-height: 100vh;
+    padding: clamp(16px, 4vw, 24px);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  /* Phase transitions */
+  .phase {
+    display: none;
+    animation: fadeIn 0.4s ease;
+  }
+  
+  .phase.active {
+    display: block;
+  }
+  
+  /* Header styling */
+  .form-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  
+  .form-title {
+    font-size: clamp(24px, 5vw, 28px);
+    font-weight: 800;
+    color: #1a202c;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  .form-subtitle {
+    font-size: clamp(14px, 3vw, 16px);
+    color: #718096;
+  }
+  
+  /* Social proof ticker */
+  .social-proof {
+    background: #fef3c7;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: clamp(13px, 2.5vw, 14px);
+    color: #92400e;
+    margin-bottom: 20px;
+    text-align: center;
+    animation: slideIn 0.5s ease;
+  }
+  
+  .social-proof::before {
+    content: '🔴';
+    margin-right: 6px;
+  }
+  
+  /* Progress indicator */
+  .progress-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .progress-step {
+    font-size: clamp(12px, 2.5vw, 14px);
+    color: #a0aec0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .progress-step.active {
+    color: #ff6b35;
+    font-weight: 600;
+  }
+  
+  .progress-step::after {
+    content: '→';
+    margin: 0 8px;
+    color: #e2e8f0;
+  }
+  
+  .progress-step:last-child::after {
+    display: none;
+  }
+  
+  /* Form styling */
+  .form-group {
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  .form-label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #2d3748;
+    font-size: clamp(14px, 2.5vw, 15px);
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: clamp(15px, 3vw, 16px);
+    transition: all 0.2s;
+    background-color: #fff;
+  }
+  
+  .form-input:focus {
+    outline: none;
+    border-color: #ff6b35;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+  }
+  
+  .form-input.error {
+    border-color: #dc3545;
+    background-color: #fff5f5;
+  }
+  
+  .form-input.success {
+    border-color: #28a745;
+    background-color: #f8fff9;
+  }
+  
+  /* Dropdown styling */
+  .form-select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: clamp(15px, 3vw, 16px);
+    transition: all 0.2s;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  
+  .form-select:focus {
+    outline: none;
+    border-color: #ff6b35;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+  }
+  
+  /* Submit button */
+  .submit-btn {
+    width: 100%;
+    padding: clamp(18px, 4vw, 22px) clamp(24px, 5vw, 32px);
+    background: linear-gradient(135deg, #ff6b35 0%, #ff8c5a 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: clamp(17px, 4vw, 19px);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.3px;
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+  }
+  
+  .submit-btn:disabled {
+    background: #cbd5e0;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+  
+  /* Trust indicators */
+  .trust-indicators {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+    font-size: clamp(12px, 2.5vw, 13px);
+    color: #718096;
+  }
+  
+  .trust-indicators span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  /* Offer preview box */
+  .offer-preview {
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+    border: 2px solid #f59e0b;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .offer-preview::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
+    animation: pulse 3s ease-in-out infinite;
+  }
+  
+  .offer-title {
+    font-size: clamp(18px, 3.5vw, 20px);
+    font-weight: 700;
+    color: #92400e;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .offer-details {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .offer-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(245, 158, 11, 0.2);
+    font-size: clamp(14px, 2.8vw, 15px);
+  }
+  
+  .offer-line:last-child {
+    border-bottom: none;
+    font-weight: 700;
+    color: #92400e;
+    font-size: clamp(16px, 3.2vw, 18px);
+    padding-top: 12px;
+  }
+  
+  .blur-overlay {
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(4px);
+    background: rgba(255, 255, 255, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    border-radius: 12px;
+  }
+  
+  .unlock-message {
+    font-size: clamp(15px, 3vw, 16px);
+    font-weight: 600;
+    color: #92400e;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  /* Scarcity element */
+  .scarcity-notice {
+    background: #fee2e2;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: clamp(13px, 2.5vw, 14px);
+    color: #991b1b;
+    text-align: center;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  
+  /* Trust badges */
+  .trust-badges {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin: 20px 0;
+    font-size: clamp(12px, 2.5vw, 13px);
+    color: #4b5563;
+    font-weight: 500;
+  }
+  
+  .trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  /* Success message */
+  .success-content {
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  .success-icon {
+    width: clamp(70px, 15vw, 90px);
+    height: clamp(70px, 15vw, 90px);
+    background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+  }
+  
+  .success-icon svg {
+    width: 50%;
+    height: 50%;
+    stroke: white;
+    stroke-width: 3;
+  }
+  
+  .success-title {
+    font-size: clamp(22px, 4.5vw, 26px);
+    font-weight: 800;
+    color: #065f46;
+    margin-bottom: 16px;
+  }
+  
+  .next-steps {
+    background: #f0fdf4;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: left;
+  }
+  
+  .next-step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+    font-size: clamp(14px, 2.8vw, 15px);
+    color: #374151;
+  }
+  
+  .next-step-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  .next-step-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  
+  .phone-highlight {
+    background: #fef3c7;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    margin: 20px 0;
+    font-size: clamp(15px, 3vw, 16px);
+  }
+  
+  .phone-number {
+    font-size: clamp(18px, 3.6vw, 20px);
+    font-weight: 700;
+    color: #92400e;
+    margin-top: 4px;
+  }
+  
+  /* Compliance text */
+  .compliance-text {
+    font-size: clamp(11px, 2.2vw, 12px);
+    color: #9ca3af;
+    text-align: center;
+    margin-top: 16px;
+    line-height: 1.4;
+  }
+  
+  /* Mobile optimizations */
+  .mobile-cta {
+    display: none;
+    background: #e0e7ff;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+    margin-top: 16px;
+    font-size: clamp(14px, 2.8vw, 15px);
+    color: #3730a3;
+  }
+  
+  .mobile-cta a {
+    color: #3730a3;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  
+  @media (max-width: 600px) {
+    .mobile-cta {
+      display: block;
+    }
+    
+    .trust-badges {
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    
+    .blur-overlay {
+      backdrop-filter: blur(2px);
+    }
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  
+  @keyframes scaleIn {
+    from { transform: scale(0) rotate(-180deg); opacity: 0; }
+    to { transform: scale(1) rotate(0); opacity: 1; }
+  }
+  
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.05); opacity: 0.2; }
+  }
+  
+  /* Field error styling */
+  .field-error {
+    font-size: clamp(12px, 2.4vw, 13px);
+    color: #dc3545;
+    margin-top: 4px;
+    display: none;
+    animation: slideIn 0.3s ease;
+  }
+  
+  .field-error.show {
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<div class="cash-offer-form">
+  <!-- Phase 1: Initial Hook -->
+  <div class="phase active" id="phase1">
+    <div class="social-proof" id="socialProof">
+      Mike in Stamford just requested an offer 12 minutes ago
+    </div>
+    
+    <div class="form-header">
+      <h1 class="form-title">
+        <span>🏠</span>
+        <span>Get Your Cash Offer in 60 Seconds</span>
+      </h1>
+    </div>
+    
+    <form id="phase1Form">
+      <div class="form-group">
+        <label class="form-label" for="property_address">Property Address*</label>
+        <input 
+          type="text" 
+          id="property_address" 
+          name="property_address" 
+          class="form-input" 
+          placeholder="Enter your property address..." 
+          required
+        />
+        <span class="field-error" id="addressError">Please enter a valid address</span>
+      </div>
+      
+      <button type="submit" class="submit-btn">
+        Get My Fair Cash Offer
+        <span>→</span>
+      </button>
+    </form>
+    
+    <div class="trust-indicators">
+      <span>✓ No obligations</span>
+      <span>✓ No spam calls</span>
+      <span>✓ Secure & confidential</span>
+    </div>
+  </div>
+  
+  <!-- Phase 2: The Reveal -->
+  <div class="phase" id="phase2">
+    <div class="progress-bar">
+      <div class="progress-step">Step 1 of 2</div>
+      <div class="progress-step active">Step 2 of 2</div>
+    </div>
+    
+    <div class="offer-preview">
+      <div class="offer-title">
+        <span>💰</span>
+        <span>ESTIMATED CASH OFFER RANGE</span>
+      </div>
+      <div class="offer-details">
+        <div class="offer-line">
+          <span>Your Property:</span>
+          <span id="displayAddress"></span>
+        </div>
+        <div class="offer-line">
+          <span>Market Analysis:</span>
+          <span>✓ Complete</span>
+        </div>
+        <div class="offer-line">
+          <span>Estimated Value:</span>
+          <span id="offerRange">$XXX,XXX - $XXX,XXX</span>
+        </div>
+      </div>
+      <div class="blur-overlay">
+        <div class="unlock-message" id="unlockMessage">
+          🔒 Enter your contact info to unlock your exact offer
+        </div>
+      </div>
+    </div>
+    
+    <div class="scarcity-notice">
+      <span>⚡</span>
+      <span>2 other homeowners viewing offers in your area</span>
+    </div>
+    
+    <form id="phase2Form">
+      <div class="form-group">
+        <label class="form-label" for="full_name">Full Name*</label>
+        <input 
+          type="text" 
+          id="full_name" 
+          name="full_name" 
+          class="form-input" 
+          placeholder="John Smith"
+          required
+        />
+        <span class="field-error" id="nameError">Please enter your full name</span>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label" for="phone">Phone Number*</label>
+        <input 
+          type="tel" 
+          id="phone" 
+          name="phone" 
+          class="form-input" 
+          placeholder="(555) 555-5555"
+          required
+        />
+        <span class="field-error" id="phoneError">Please enter a valid phone number</span>
+      </div>
+      
+      <div class="form-group" id="emailGroup">
+        <label class="form-label" for="email">
+          Email
+          <span style="font-weight: 400; color: #718096;">(optional - for offer documentation)</span>
+        </label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          class="form-input" 
+          placeholder="john@email.com"
+        />
+        <span class="field-error" id="emailError">Please enter a valid email address</span>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label" for="timeline">When do you need to sell?</label>
+        <select id="timeline" name="timeline" class="form-select" required>
+          <option value="">Select timeline...</option>
+          <option value="asap">ASAP</option>
+          <option value="1-3months">1-3 months</option>
+          <option value="3-6months">3-6 months</option>
+          <option value="exploring">Just exploring</option>
+        </select>
+      </div>
+      
+      <button type="submit" class="submit-btn">
+        Unlock My Fair Cash Offer
+        <span>→</span>
+      </button>
+      
+      <div class="compliance-text">
+        By submitting, you agree to receive calls/texts about your property. 
+        Msg & data rates may apply. Reply STOP to cancel. 
+        <a href="#" style="color: #9ca3af;">Privacy Policy</a>
+      </div>
+    </form>
+    
+    <div class="trust-badges">
+      <div class="trust-badge">A+ BBB</div>
+      <div class="trust-badge">|</div>
+      <div class="trust-badge">500+ Homes</div>
+      <div class="trust-badge">|</div>
+      <div class="trust-badge">Licensed & Insured</div>
+    </div>
+    
+    <div class="mobile-cta">
+      Prefer to talk? Call now: <a href="tel:9142238317">(914) 223-8317</a>
+    </div>
+  </div>
+  
+  <!-- Phase 3: Success Confirmation -->
+  <div class="phase" id="phase3">
+    <div class="success-content">
+      <div class="success-icon">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      
+      <h2 class="success-title">✅ Perfect! Your Cash Offer is Being Prepared</h2>
+      
+      <div class="next-steps">
+        <h3 style="margin: 0 0 16px 0; font-size: clamp(16px, 3.2vw, 18px); color: #1f2937;">
+          Here's what happens next:
+        </h3>
+        
+        <div class="next-step-item">
+          <span class="next-step-icon">⏱️</span>
+          <div>
+            <strong>Within 30 minutes:</strong><br>
+            Our acquisition specialist will call you
+          </div>
+        </div>
+        
+        <div class="next-step-item">
+          <span class="next-step-icon">📋</span>
+          <div>
+            <strong>During the call:</strong><br>
+            We'll confirm details and schedule your property evaluation
+          </div>
+        </div>
+        
+        <div class="next-step-item">
+          <span class="next-step-icon">💵</span>
+          <div>
+            <strong>Within 24 hours:</strong><br>
+            You'll receive your official cash offer
+          </div>
+        </div>
+      </div>
+      
+      <div class="phone-highlight">
+        <div>Your specialist will call from</div>
+        <div class="phone-number">(914) 223-8317</div>
+        <div style="margin-top: 8px; font-size: clamp(13px, 2.6vw, 14px);">
+          Please save this number!
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Hidden fields for form data -->
+<input type="hidden" name="street_number" value="" />
+<input type="hidden" name="route" value="" />
+<input type="hidden" name="city" value="" />
+<input type="hidden" name="state" value="" />
+<input type="hidden" name="postal_code" value="" />
+<input type="hidden" name="country" value="USA" />
+<input type="hidden" name="first_name" value="" />
+<input type="hidden" name="last_name" value="" />
+
+<script>
+// Configuration
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xblyrjpg';
+
+// Social proof messages
+const socialProofMessages = [
+  "Mike in Stamford just requested an offer 12 minutes ago",
+  "Sarah in Greenwich received her offer 8 minutes ago",
+  "John in Norwalk just submitted for a cash offer",
+  "Lisa in Fairfield is reviewing her offer now",
+  "Tom in Westport just accepted our cash offer"
+];
+
+// Unlock messages for variety
+const unlockMessages = [
+  "🔒 Enter your contact info to unlock your exact offer",
+  "Your offer is ready! Just need your contact info to send it",
+  "Analyzing complete: $XXX,XXX estimated. Unlock exact amount",
+  "Higher than expected! Enter details to see your offer"
+];
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+  initializePhase1();
+  setupMobileOptimizations();
+  startSocialProofRotation();
+  updateFrameHeight();
+  
+  // Listen for window resize
+  window.addEventListener('resize', debounce(updateFrameHeight, 250));
+});
+
+// Update iframe height for Framer embedding
+function updateFrameHeight() {
+  // Get the actual content height
+  const contentHeight = document.querySelector('.cash-offer-form').scrollHeight;
+  
+  // Send height to parent frame
+  if (window.parent !== window) {
+    window.parent.postMessage({
+      type: 'resize-frame',
+      height: contentHeight + 40 // Add some padding
+    }, '*');
+  }
+  
+  // Also set the height on the body for non-iframe embeds
+  document.body.style.minHeight = contentHeight + 'px';
+}
+
+// Debounce helper
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+// Social proof rotation
+function startSocialProofRotation() {
+  const socialProofEl = document.getElementById('socialProof');
+  if (!socialProofEl) return;
+  
+  let index = 0;
+  setInterval(() => {
+    index = (index + 1) % socialProofMessages.length;
+    socialProofEl.style.animation = 'none';
+    setTimeout(() => {
+      socialProofEl.textContent = socialProofMessages[index];
+      socialProofEl.style.animation = 'slideIn 0.5s ease';
+    }, 50);
+  }, 8000);
+}
+
+// Phase 1 initialization
+function initializePhase1() {
+  const phase1Form = document.getElementById('phase1Form');
+  const addressInput = document.getElementById('property_address');
+  
+  // Handle form submission
+  phase1Form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const address = addressInput.value.trim();
+    if (address.length < 5) {
+      showError('property_address', 'addressError');
+      return;
+    }
+    
+    // Store address and move to phase 2
+    sessionStorage.setItem('propertyAddress', address);
+    transitionToPhase2(address);
+  });
+  
+  // Address validation
+  addressInput.addEventListener('blur', function() {
+    if (this.value.trim().length < 5 && this.value.trim().length > 0) {
+      showError('property_address', 'addressError');
+    } else {
+      hideError('property_address', 'addressError');
+      if (this.value.trim().length >= 5) {
+        this.classList.add('success');
+      }
+    }
+  });
+  
+  addressInput.addEventListener('input', function() {
+    if (this.classList.contains('error')) {
+      if (this.value.trim().length >= 5) {
+        hideError('property_address', 'addressError');
+      }
+    }
+    this.classList.remove('success');
+  });
+}
+
+// Transition to Phase 2
+function transitionToPhase2(address) {
+  const phase1 = document.getElementById('phase1');
+  const phase2 = document.getElementById('phase2');
+  
+  // Set display address
+  document.getElementById('displayAddress').textContent = address;
+  
+  // Generate estimated value range
+  const estimatedValue = generateEstimatedValue();
+  document.getElementById('offerRange').textContent = estimatedValue;
+  
+  // Set random unlock message
+  const unlockMsg = unlockMessages[Math.floor(Math.random() * unlockMessages.length)];
+  document.getElementById('unlockMessage').textContent = unlockMsg;
+  
+  // Transition
+  phase1.classList.remove('active');
+  setTimeout(() => {
+    phase2.classList.add('active');
+    initializePhase2();
+    updateFrameHeight();
+  }, 300);
+}
+
+// Generate estimated value range
+function generateEstimatedValue() {
+  // Generate realistic looking estimates
+  const baseValues = [275000, 325000, 385000, 425000, 475000, 525000, 625000];
+  const base = baseValues[Math.floor(Math.random() * baseValues.length)];
+  const min = base - 25000;
+  const max = base + 35000;
+  
+  return `$${min.toLocaleString()} - $${max.toLocaleString()}`;
+}
+
+// Phase 2 initialization
+function initializePhase2() {
+  const phase2Form = document.getElementById('phase2Form');
+  const phoneInput = document.getElementById('phone');
+  const emailInput = document.getElementById('email');
+  const nameInput = document.getElementById('full_name');
+  
+  // Phone formatting
+  phoneInput.addEventListener('input', function(e) {
+    let value = e.target.value.replace(/\D/g, '');
+    if (value.length > 0) {
+      if (value.length <= 3) {
+        value = `(${value}`;
+      } else if (value.length <= 6) {
+        value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
+      } else {
+        value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6, 10)}`;
+      }
+    }
+    e.target.value = value;
+    
+    if (this.classList.contains('error')) {
+      if (validatePhone(value)) {
+        hideError('phone', 'phoneError');
+      }
+    }
+  });
+  
+  // Validation on blur
+  phoneInput.addEventListener('blur', function() {
+    if (this.value) {
+      if (!validatePhone(this.value)) {
+        showError('phone', 'phoneError');
+      } else {
+        hideError('phone', 'phoneError');
+        this.classList.add('success');
+      }
+    }
+  });
+  
+  nameInput.addEventListener('blur', function() {
+    if (this.value.trim().length < 2 && this.value.trim().length > 0) {
+      showError('full_name', 'nameError');
+    } else {
+      hideError('full_name', 'nameError');
+      if (this.value.trim().length >= 2) {
+        this.classList.add('success');
+      }
+    }
+  });
+  
+  emailInput.addEventListener('blur', function() {
+    if (this.value && !validateEmail(this.value)) {
+      showError('email', 'emailError');
+    } else {
+      hideError('email', 'emailError');
+      if (this.value && validateEmail(this.value)) {
+        this.classList.add('success');
+      }
+    }
+  });
+  
+  // Form submission
+  phase2Form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    // Validate all fields
+    let isValid = true;
+    
+    const name = nameInput.value.trim();
+    const phone = phoneInput.value;
+    const email = emailInput.value;
+    const timeline = document.getElementById('timeline').value;
+    
+    if (name.length < 2) {
+      showError('full_name', 'nameError');
+      isValid = false;
+    }
+    
+    if (!validatePhone(phone)) {
+      showError('phone', 'phoneError');
+      isValid = false;
+    }
+    
+    if (email && !validateEmail(email)) {
+      showError('email', 'emailError');
+      isValid = false;
+    }
+    
+    if (!timeline) {
+      isValid = false;
+    }
+    
+    if (!isValid) return;
+    
+    // Disable button
+    const submitBtn = e.target.querySelector('.submit-btn');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Submitting... <span>⏳</span>';
+    
+    // Parse name
+    const nameParts = name.split(' ');
+    const firstName = nameParts[0] || '';
+    const lastName = nameParts.slice(1).join(' ') || '';
+    
+    // Update hidden fields
+    document.querySelector('[name="first_name"]').value = firstName;
+    document.querySelector('[name="last_name"]').value = lastName;
+    
+    // Prepare form data
+    const formData = new FormData();
+    formData.append('property_address', sessionStorage.getItem('propertyAddress'));
+    formData.append('full_name', name);
+    formData.append('first_name', firstName);
+    formData.append('last_name', lastName);
+    formData.append('phone', phone);
+    formData.append('email', email);
+    formData.append('timeline', timeline);
+    formData.append('offer_range', document.getElementById('offerRange').textContent);
+    
+    // Add address components if available
+    const hiddenFields = ['street_number', 'route', 'city', 'state', 'postal_code', 'country'];
+    hiddenFields.forEach(field => {
+      const value = document.querySelector(`[name="${field}"]`).value;
+      if (value) formData.append(field, value);
+    });
+    
+    try {
+      // Submit to Formspree
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      // Push to dataLayer for GTM
+      if (window.dataLayer) {
+        window.dataLayer.push({
+          'event': 'formSubmission',
+          'formID': 'cashOfferFormV2',
+          'email': email,
+          'firstName': firstName,
+          'lastName': lastName,
+          'phone': phone,
+          'timeline': timeline,
+          'propertyAddress': sessionStorage.getItem('propertyAddress'),
+          'offerRange': document.getElementById('offerRange').textContent
+        });
+      }
+      
+      // Transition to success
+      transitionToPhase3();
+      
+    } catch (error) {
+      console.error('Submission error:', error);
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Unlock My Fair Cash Offer <span>→</span>';
+      alert('Sorry, there was an error. Please try again or call us at (914) 223-8317');
+    }
+  });
+}
+
+// Transition to Phase 3
+function transitionToPhase3() {
+  const phase2 = document.getElementById('phase2');
+  const phase3 = document.getElementById('phase3');
+  
+  phase2.classList.remove('active');
+  setTimeout(() => {
+    phase3.classList.add('active');
+    updateFrameHeight();
+  }, 300);
+}
+
+// Validation functions
+function validateEmail(email) {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(email);
+}
+
+function validatePhone(phone) {
+  const cleaned = phone.replace(/\D/g, '');
+  return cleaned.length === 10;
+}
+
+function showError(fieldId, errorId) {
+  document.getElementById(fieldId).classList.add('error');
+  document.getElementById(errorId).classList.add('show');
+}
+
+function hideError(fieldId, errorId) {
+  document.getElementById(fieldId).classList.remove('error');
+  document.getElementById(errorId).classList.remove('show');
+}
+
+// Mobile optimizations
+function setupMobileOptimizations() {
+  if (window.innerWidth <= 600) {
+    // Hide email field on mobile for phase 2
+    const emailGroup = document.getElementById('emailGroup');
+    if (emailGroup) {
+      emailGroup.style.display = 'none';
+    }
+  }
+}
+
+// Google Maps Autocomplete
+function initMap() {
+  try {
+    const input = document.getElementById('property_address');
+    if (!input) return;
+    
+    const autocomplete = new google.maps.places.Autocomplete(input);
+    
+    autocomplete.setComponentRestrictions({
+      country: ['us'],
+    });
+    
+    autocomplete.setFields(['address_components', 'formatted_address']);
+    
+    autocomplete.addListener('place_changed', function() {
+      const place = autocomplete.getPlace();
+      
+      if (!place.address_components) return;
+      
+      // Mark field as valid
+      input.classList.add('success');
+      input.classList.remove('error');
+      document.getElementById('addressError').classList.remove('show');
+      
+      // Parse address components
+      place.address_components.forEach(component => {
+        const types = component.types;
+        
+        if (types.includes('street_number')) {
+          document.querySelector('[name="street_number"]').value = component.long_name;
+        }
+        if (types.includes('route')) {
+          document.querySelector('[name="route"]').value = component.long_name;
+        }
+        if (types.includes('locality')) {
+          document.querySelector('[name="city"]').value = component.long_name;
+        }
+        if (types.includes('administrative_area_level_1')) {
+          document.querySelector('[name="state"]').value = component.short_name;
+        }
+        if (types.includes('postal_code')) {
+          document.querySelector('[name="postal_code"]').value = component.long_name;
+        }
+      });
+    });
+    
+  } catch (error) {
+    console.error('Error initializing autocomplete:', error);
+  }
+}
+
+// Make initMap globally accessible
+window.initMap = initMap;
+</script>
+
+<!-- Google Maps API with Places library -->
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChsAghoLBZ_2uOwtOil9qhDG_tQdsDuTM&libraries=places&callback=initMap">
+</script>
+
+</body>
+</html>
