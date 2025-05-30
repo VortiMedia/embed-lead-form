@@ -6,16 +6,19 @@
   "scripts": {
     "dev": "python3 -m http.server 3000",
     "start": "python3 -m http.server 8080",
-    "build": "echo 'No build step required - static files'"
+    "build": "echo 'Static files ready for deployment'"
   },
   "keywords": [
     "lead-form",
-    "real-estate",
+    "real-estate", 
     "cash-offer",
     "calculator",
     "framer",
     "embed"
   ],
-  "author": "Your Name",
-  "license": "MIT"
+  "author": "VortiMedia",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14"
+  }
 }
