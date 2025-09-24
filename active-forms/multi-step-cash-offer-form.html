@@ -1,0 +1,2238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get a cash offer for your home in 24 hours. No repairs, no showings, close in 7 days.">
+    <title>Get Cash for Your Home - Fast, Fair Offer</title>
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5C5G6JMZ');</script>
+    <!-- End Google Tag Manager -->
+    
+    <!-- Preconnect to Google Fonts and APIs -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://maps.googleapis.com">
+    
+    <!-- Critical CSS inline for performance -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.5;
+            color: #111827;
+            background: transparent;
+            padding: 20px;
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 440px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 32px 24px;
+            position: relative;
+            overflow: visible;
+        }
+
+        /* Blurred Offer Visual */
+        .offer-preview {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer-preview::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            backdrop-filter: blur(3px);
+            background: rgba(255, 255, 255, 0.3);
+            z-index: 1;
+        }
+
+        .offer-content {
+            position: relative;
+            z-index: 0;
+        }
+
+        .offer-address {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 16px;
+        }
+
+        .offer-amount {
+            font-size: 36px;
+            font-weight: 800;
+            color: #059669;
+            margin-bottom: 8px;
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .offer-label {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+
+        .market-comparison {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .comparison-item {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .comparison-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .comparison-label {
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        .unlock-text {
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+            color: #E8743B;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .google-places-tooltip {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 13px;
+            color: #92400e;
+            margin-top: 8px;
+            display: none;
+            animation: slideDown 0.3s ease;
+        }
+
+        .google-places-tooltip.show {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Minimal Google Places Styling - Let Google handle the details */
+        .pac-container {
+            font-family: inherit !important;
+            z-index: 9999 !important;
+        }
+
+        /* Address input container */
+        .address-input-container {
+            position: relative;
+        }
+
+        .address-hint {
+            font-size: 14px;
+            color: #6b7280;
+            margin-top: 8px;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .address-hint.show {
+            display: block;
+            opacity: 1;
+        }
+        
+        .loading-state {
+            font-size: 14px;
+            color: #6b7280;
+            margin-top: 8px;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        
+        .loading-state.show {
+            display: block;
+            opacity: 1;
+        }
+        
+        .inline-error {
+            background: #fef2f2;
+            border: 1px solid #fca5a5;
+            color: #dc2626;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-top: 8px;
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+        
+        .inline-error.show {
+            display: block;
+        }
+
+        /* Dropdown arrow indicator */
+        .dropdown-arrow {
+            position: absolute;
+            right: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            opacity: 0.5;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            pointer-events: none;
+            color: #6b7280;
+        }
+
+        .form-group:focus-within .dropdown-arrow {
+            transform: translateY(-50%) rotate(180deg);
+            opacity: 0.7;
+        }
+
+        .form-group.has-suggestions .dropdown-arrow {
+            opacity: 0;
+        }
+
+        /* Pulse animation for dropdown highlighting */
+        @keyframes pulse {
+            0%, 100% { 
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12), 0 4px 10px rgba(0, 0, 0, 0.08); 
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 10px 25px rgba(232, 116, 59, 0.3), 0 4px 10px rgba(232, 116, 59, 0.2);
+                transform: scale(1.02);
+            }
+        }
+
+        /* Step Content */
+        .step {
+            display: none;
+            animation: slideIn 0.4s ease;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .step-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .step-subtitle {
+            font-size: 16px;
+            color: #6b7280;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+        
+        .form-group {
+            margin-bottom: 16px;
+            position: relative;
+        }
+        
+        input {
+            width: 100%;
+            height: 54px;
+            padding: 0 20px;
+            padding-left: 50px;
+            padding-right: 50px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: inherit;
+            background: #ffffff;
+            transition: all 0.2s ease;
+            color: #111827;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        
+        input#property-location {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%236b7280" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: 16px center;
+            background-size: 20px 20px;
+        }
+        
+        /* Mobile pin icon fix */
+        @media (max-width: 480px) {
+            input#property-location {
+                background-position: 12px center;
+                background-size: 18px 18px;
+                padding-left: 40px !important;
+                padding-right: 50px !important;
+            }
+        }
+        
+        input:hover {
+            border-color: #d1d5db;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #E8743B;
+            box-shadow: 0 0 0 3px rgba(232, 116, 59, 0.1);
+        }
+        
+        input::placeholder {
+            color: #9ca3af;
+        }
+        
+        input.error {
+            border-color: #ef4444;
+            background-color: #fef2f2;
+        }
+        
+        input.success {
+            border-color: #10b981;
+            background-color: #f0fdf4;
+            animation: successPulse 0.4s ease;
+        }
+        
+        @keyframes successPulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+            }
+            50% {
+                transform: scale(1.02);
+                box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.1);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+            }
+        }
+        
+        .checkmark {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%) scale(0);
+            width: 24px;
+            height: 24px;
+            background: #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            opacity: 0;
+            z-index: 10;
+        }
+        
+        /* Address field checkmark positioning */
+        #property-location + .checkmark {
+            right: 45px; /* Move left to avoid dropdown arrow */
+        }
+        
+        /* Mobile checkmark adjustments */
+        @media (max-width: 480px) {
+            .checkmark {
+                width: 22px;
+                height: 22px;
+                right: 14px;
+                font-size: 12px;
+            }
+            
+            #property-location + .checkmark {
+                right: 40px;
+            }
+        }
+        
+        input.success ~ .checkmark {
+            transform: translateY(-50%) scale(1);
+            opacity: 1;
+        }
+        
+        .error-message {
+            color: #ef4444;
+            font-size: 13px;
+            margin-top: 6px;
+            display: none;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+
+        /* Button Styles */
+        .btn {
+            width: 100%;
+            height: 56px;
+            background: #E8743B;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            letter-spacing: -0.01em;
+            margin-top: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:hover:not(:disabled) {
+            background: #d6692f;
+            transform: translateY(-1px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .btn:active {
+            transform: scale(0.98);
+        }
+        
+        .btn:disabled {
+            background: #e5e7eb;
+            color: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .btn-secondary {
+            background: #f3f4f6;
+            color: #374151;
+            margin-right: 12px;
+            flex: 1;
+        }
+
+        .btn-secondary:hover:not(:disabled) {
+            background: #e5e7eb;
+            transform: translateY(-1px);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .button-group .btn {
+            margin-top: 0;
+            flex: 1;
+        }
+
+        /* Multi-column layout for step 2 */
+        .form-row {
+            display: flex;
+            gap: 12px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .trust-badges {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #374151;
+        }
+        
+        .trust-badge svg {
+            width: 20px;
+            height: 20px;
+            color: #10b981;
+            flex-shrink: 0;
+        }
+
+        .trust-section {
+            margin: 20px 0;
+            padding: 16px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .trust-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .trust-item.positive {
+            color: #059669;
+        }
+
+        .trust-item.positive svg {
+            width: 18px;
+            height: 18px;
+            color: #10b981;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .trust-item.warning {
+            color: #dc2626;
+            font-weight: 500;
+        }
+
+        .trust-item.warning svg {
+            width: 18px;
+            height: 18px;
+            color: #ef4444;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        
+        .disclaimer {
+            font-size: 11px;
+            color: #9ca3af;
+            text-align: center;
+            margin-top: 16px;
+            line-height: 1.4;
+        }
+        
+        .disclaimer a {
+            color: #E8743B;
+            text-decoration: underline;
+        }
+        
+        .disclaimer a:hover {
+            color: #d6692f;
+        }
+        
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.95);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: 1000;
+        }
+        
+        .loading-overlay.show {
+            display: flex;
+        }
+        
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 3px solid #f3f4f6;
+            border-top-color: #E8743B;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-bottom: 16px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            font-size: 16px;
+            color: #374151;
+            font-weight: 500;
+        }
+        
+        /* Enhanced Mobile optimizations */
+        @media (max-width: 480px) {
+            body {
+                padding: 12px;
+                min-height: 100vh;
+                min-height: -webkit-fill-available;
+            }
+            
+            .container {
+                padding: 20px 16px;
+                border-radius: 12px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                min-height: auto;
+                width: 100%;
+                max-width: 100%;
+                margin: 0;
+            }
+            
+            .btn {
+                font-size: 16px;
+                height: 52px;
+                border-radius: 10px;
+                position: static;
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .step-title {
+                font-size: 18px;
+                line-height: 1.2;
+                margin-bottom: 6px;
+            }
+
+            .step-subtitle {
+                font-size: 14px;
+                margin-bottom: 20px;
+            }
+
+            .button-group {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .button-group .btn {
+                margin-top: 0;
+                width: 100%;
+            }
+            
+            /* Fix text input sizing on mobile */
+            input {
+                height: 50px;
+                font-size: 16px;
+                padding: 0 16px;
+                border-radius: 10px;
+                -webkit-appearance: none;
+                appearance: none;
+            }
+            
+            
+            /* Prevent zoom on input focus */
+            input[type="text"],
+            input[type="email"],
+            input[type="tel"] {
+                font-size: 16px !important;
+            }
+            
+            .form-group {
+                margin-bottom: 16px;
+            }
+            
+            /* Fix address hint positioning */
+            .address-hint {
+                font-size: 13px;
+                margin-top: 8px;
+                padding: 0 4px;
+            }
+            
+            /* Ensure proper viewport height */
+            .form-page {
+                min-height: auto;
+            }
+        }
+        
+        /* iPhone specific fixes */
+        @media (max-width: 414px) {
+            body {
+                padding: 8px;
+            }
+            
+            .container {
+                padding: 16px 12px;
+            }
+            
+            .step-title {
+                font-size: 16px;
+            }
+            
+            input {
+                height: 48px;
+                font-size: 16px;
+            }
+        }
+        
+        /* Success page styles */
+        .success-page {
+            display: none;
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        .success-page.show {
+            display: block;
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            animation: successPulse 0.6s ease;
+        }
+        
+        .success-icon svg {
+            width: 40px;
+            height: 40px;
+            color: white;
+        }
+        
+        @keyframes successPulse {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .success-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        
+        .success-subtitle {
+            font-size: 16px;
+            color: #6b7280;
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+        
+        .next-steps {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            text-align: left;
+        }
+        
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .step-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .step-number {
+            width: 24px;
+            height: 24px;
+            background: #E8743B;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        
+        .step-text {
+            font-size: 14px;
+            color: #374151;
+            line-height: 1.5;
+        }
+        
+        .step-text strong {
+            font-weight: 600;
+            color: #111827;
+        }
+        
+        .contact-card {
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 24px;
+        }
+        
+        .contact-card-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+        
+        .contact-phone {
+            font-size: 20px;
+            font-weight: 700;
+            color: #E8743B;
+            margin-bottom: 4px;
+        }
+        
+        .contact-note {
+            font-size: 13px;
+            color: #6b7280;
+        }
+        
+        .form-page {
+            display: block;
+        }
+        
+        .form-page.hide {
+            display: none;
+        }
+
+        /* Step-specific styles */
+        .step-hint {
+            font-size: 14px;
+            color: #6b7280;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .step-hint svg {
+            width: 16px;
+            height: 16px;
+            color: #10b981;
+        }
+    </style>
+    
+    <!-- Google Tag Manager -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {
+            'analytics_storage': 'granted',
+            'ad_storage': 'granted'
+        });
+    </script>
+    
+    <!-- FIXED: Direct Google Ads Enhanced Conversions Setup -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17041538947"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('config', 'AW-17041538947', {
+            'enhanced_conversions': true
+        });
+    </script>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5C5G6JMZ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <div class="container">
+        <!-- Form Page -->
+        <div class="form-page" id="formPage">
+
+            <form id="cashOfferForm" autocomplete="off">
+                <!-- Step 1: Property Address -->
+                <div class="step active" id="step1">
+                    <div class="form-group">
+                        <input 
+                            type="search" 
+                            id="property-location" 
+                            name="property-location" 
+                            placeholder="Start typing your property location..." 
+                            required 
+                            autocomplete="new-password"
+                            inputmode="text"
+                        >
+                        <div class="checkmark">✓</div>
+                        <div class="dropdown-arrow">
+                            <svg viewBox="0 0 12 12" fill="currentColor">
+                                <path d="M6 8L2 4h8L6 8z"/>
+                            </svg>
+                        </div>
+                        <div class="address-hint" id="addressHint">
+                            Start typing and select your address from the suggestions
+                        </div>
+                        <div class="loading-state" id="loadingState">
+                            Searching for addresses...
+                        </div>
+                        <div class="inline-error" id="inlineError">
+                            Please select an address from the dropdown
+                        </div>
+                        <div class="error-message" id="property-locationError">Please enter a valid location</div>
+                    </div>
+                    
+                    <button type="button" class="btn" id="step1Next">
+                        Continue
+                        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Step 2: Blurred Offer + Contact Information -->
+                <div class="step" id="step2">
+                    <!-- Blurred Cash Offer Preview -->
+                    <div class="offer-preview">
+                        <div class="offer-content">
+                            <div class="offer-address" id="offerAddress">123 Main Street, Your City</div>
+                            <div class="offer-amount">$XXX,XXX</div>
+                            <div class="offer-label">Cash Offer Estimate</div>
+                            
+                            <div class="market-comparison">
+                                <div class="comparison-item">
+                                    <div class="comparison-value">$XXX,XXX</div>
+                                    <div class="comparison-label">Market Value</div>
+                                </div>
+                                <div class="comparison-item">
+                                    <div class="comparison-value">7 Days</div>
+                                    <div class="comparison-label">Close Time</div>
+                                </div>
+                                <div class="comparison-item">
+                                    <div class="comparison-value">$0</div>
+                                    <div class="comparison-label">Repairs Needed</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="unlock-text">To unlock your personalized cash offer:</div>
+                    
+                    <h2 class="step-title">Where should we send your offer?</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input 
+                                type="text" 
+                                id="firstName" 
+                                name="firstName" 
+                                placeholder="First Name" 
+                                required 
+                                autocomplete="given-name"
+                            >
+                            <div class="checkmark">✓</div>
+                            <div class="error-message" id="firstNameError">Please enter your first name</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input 
+                                type="text" 
+                                id="lastName" 
+                                name="lastName" 
+                                placeholder="Last Name" 
+                                required 
+                                autocomplete="family-name"
+                            >
+                            <div class="checkmark">✓</div>
+                            <div class="error-message" id="lastNameError">Please enter your last name</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            placeholder="Email Address" 
+                            required 
+                            autocomplete="email"
+                            inputmode="email"
+                        >
+                        <div class="checkmark">✓</div>
+                        <div class="error-message" id="emailError">Please enter a valid email address</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input 
+                            type="tel" 
+                            id="phone" 
+                            name="phone" 
+                            placeholder="Phone Number" 
+                            required 
+                            autocomplete="tel"
+                            inputmode="tel"
+                        >
+                        <div class="checkmark">✓</div>
+                        <div class="error-message" id="phoneError">Please enter a valid phone number</div>
+                    </div>
+                    
+                    <button type="submit" class="btn" id="submitBtn">
+                        Get My Offer
+                        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+
+                    <!-- Trust/Privacy Section moved below button -->
+                    <div class="trust-section">
+                        <div class="trust-item positive">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>No obligation - you can walk away anytime</span>
+                        </div>
+                        <div class="trust-item positive">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>We'll call within 30 minutes to discuss your offer</span>
+                        </div>
+                        <div class="trust-item warning">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                            <span>If you enter an incorrect number, we cannot send an offer.</span>
+                        </div>
+                    </div>
+                    
+                    <div class="disclaimer">
+                        <p style="margin-bottom: 12px;">
+                            By pressing "Get My Offer," I consent to receive marketing calls/texts from Pace Home Buyers at the number provided via automated technology, including artificial voice and SMS. Consent not required to receive offer. Msg & data rates apply. Reply STOP to cancel.
+                        </p>
+                        
+                        <p style="margin-bottom: 12px;">
+                            By submitting, I understand: (1) Pace Home Buyers is a direct cash buyer, not representing my interests as an agent; (2) Offers may be below market value; (3) 24-hour timeline subject to property verification; (4) CT sellers receive $500 credit if no property condition report provided.
+                        </p>
+                        
+                        <p>
+                            My information will be used per our <a href="https://sell.pacehomebuyers.com/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and <a href="https://sell.pacehomebuyers.com/terms-of-service" target="_blank" rel="noopener noreferrer">Terms of Service</a>. I may revoke consent anytime. CA residents: Do Not Sell My Info.
+                        </p>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Success Page -->
+        <div class="success-page" id="successPage">
+            <div class="success-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+            </div>
+            
+            <h2 class="success-title">Form Received!</h2>
+            <p class="success-subtitle">Rich will call you within 30 minutes from<br>(914) 223-8317</p>
+            
+            <div class="next-steps">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-text">
+                        <strong>Within 30 minutes:</strong> Rich will call to discuss your property and answer any questions
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-text">
+                        <strong>Within 24 hours:</strong> You'll receive your personalized cash offer based on current market conditions
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-text">
+                        <strong>Close in 7 days:</strong> Or choose your preferred timeline - we work around your schedule
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-card-title">Save this number:</div>
+                <div class="contact-phone">(914) 223-8317</div>
+                <div class="contact-note">Add to contacts to ensure you don't miss our call</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <div class="loading-text">Analyzing property value...</div>
+    </div>
+
+    <script>
+        // Initialize dataLayer
+        window.dataLayer = window.dataLayer || [];
+
+        // Multi-step form state
+        let currentStep = 1;
+        const totalSteps = 2;
+        const formData = {};
+        let addressSelected = false;
+        let hasSelectedFromDropdown = false;
+        let userTypedAddress = false;
+
+        // SHA256 hashing function for enhanced conversions
+        async function hashString(string) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(string.toLowerCase().trim());
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            return hashHex;
+        }
+
+        // Enhanced conversion data formatter
+        async function prepareEnhancedConversionData(formData) {
+            const email = formData.email.toLowerCase().trim();
+            const phone = formData.phone.replace(/\D/g, ''); // Remove non-digits
+            const fullName = formData.fullName.trim();
+            const nameParts = fullName.split(' ');
+            const firstName = nameParts[0] || '';
+            const lastName = nameParts.slice(1).join(' ') || '';
+            const address = formData.address.trim();
+            const postalCode = ''; // ZIP code removed to improve conversion rates
+            
+            // Hash sensitive data
+            const hashedEmail = await hashString(email);
+            const hashedPhone = await hashString('+1' + phone); // Add US country code
+            
+            return {
+                // Raw data for GTM variables
+                email: email,
+                phone: phone,
+                fullName: fullName,
+                firstName: firstName,
+                lastName: lastName,
+                address: address,
+                postalCode: postalCode,
+                
+                // Hashed data for enhanced conversions
+                enhanced_conversion_data: {
+                    email: hashedEmail,
+                    phone_number: hashedPhone,
+                    address: {
+                        first_name: firstName,
+                        last_name: lastName,
+                        street: address,
+                        postal_code: postalCode,
+                        country: 'US'
+                    }
+                }
+            };
+        }
+
+        // Validate form data before tracking conversion
+        function isValidFormData(formData) {
+            console.log('Validating form data:', formData);
+            
+            // Email validation - more lenient for custom domains
+            const email = formData.email.trim();
+            if (!email.includes('@') || !email.includes('.') || email.length < 5) {
+                console.log('Email validation failed:', email);
+                return false;
+            }
+            
+            // Phone validation (10 digits)
+            const phoneDigits = formData.phone.replace(/\D/g, '');
+            if (phoneDigits.length !== 10) {
+                console.log('Phone validation failed:', phoneDigits);
+                return false;
+            }
+            
+            // Name validation (first and last name)
+            if (!formData.firstName || formData.firstName.trim().length < 2) {
+                console.log('First name validation failed:', formData.firstName);
+                return false;
+            }
+            
+            if (!formData.lastName || formData.lastName.trim().length < 2) {
+                console.log('Last name validation failed:', formData.lastName);
+                return false;
+            }
+            
+            // Address validation (at least 5 characters and from dropdown)
+            if (!formData.address || formData.address.trim().length < 5) {
+                console.log('Address validation failed:', formData.address);
+                return false;
+            }
+            
+            console.log('Form data validation passed');
+            return true;
+        }
+
+        // Configuration
+        const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xblyrjpg';
+        const GOOGLE_MAPS_API_KEY = 'AIzaSyChsAghoLBZ_2uOwtOil9qhDG_tQdsDuTM';
+        
+        // Debug Google Maps loading
+        console.log('Google Maps API Key:', GOOGLE_MAPS_API_KEY ? 'Present' : 'Missing');
+
+        // Update progress (no visual progress bar needed)
+        function updateProgress() {
+            // No progress bar to update in 2-step form
+            console.log('Current step:', currentStep);
+        }
+
+        // Show specific step
+        function showStep(stepNumber) {
+            // Hide all steps
+            document.querySelectorAll('.step').forEach(step => {
+                step.classList.remove('active');
+            });
+            
+            // Show current step
+            document.getElementById(`step${stepNumber}`).classList.add('active');
+            
+            // Update step number
+            currentStep = stepNumber;
+
+            // Track step view
+            window.dataLayer.push({
+                'event': 'step_viewed',
+                'step_number': stepNumber,
+                'step_name': getStepName(stepNumber),
+                'form_id': 'multi_step_cash_offer'
+            });
+            
+            console.log('Step viewed:', stepNumber, getStepName(stepNumber));
+
+            // Auto-focus first input in the step
+            setTimeout(() => {
+                const firstInput = document.querySelector(`#step${stepNumber} input`);
+                if (firstInput) firstInput.focus();
+            }, 300);
+        }
+
+        // Get step name for tracking
+        function getStepName(stepNumber) {
+            const stepNames = {
+                1: 'property_address',
+                2: 'contact_information_complete'
+            };
+            return stepNames[stepNumber] || 'unknown';
+        }
+
+        // Validate current step
+        function validateCurrentStep() {
+            let isValid = true;
+            const currentStepEl = document.getElementById(`step${currentStep}`);
+            const inputs = currentStepEl.querySelectorAll('input[required]');
+            
+            inputs.forEach(input => {
+                // Special validation for location field - must be selected from dropdown
+                if (input.id === 'property-location') {
+                    if (!addressSelected || !input.value.trim() || input.value.trim().length < 5) {
+                        isValid = false;
+                        showError(input.id);
+                        // Show inline error if not selected from dropdown
+                        if (!addressSelected && input.value.trim().length > 0) {
+                            showInlineError();
+                        }
+                    } else {
+                        hideInlineError();
+                    }
+                } else {
+                    if (!validateField(input)) {
+                        isValid = false;
+                        showError(input.id);
+                    }
+                }
+            });
+            
+            return isValid;
+        }
+
+        // Navigate to next step
+        function nextStep() {
+            if (!validateCurrentStep()) {
+                return;
+            }
+
+            // Save current step data
+            saveCurrentStepData();
+
+            // Track step completion
+            window.dataLayer.push({
+                'event': 'step_completed',
+                'step_number': currentStep,
+                'step_name': getStepName(currentStep),
+                'form_id': 'multi_step_cash_offer'
+            });
+
+            if (currentStep < totalSteps) {
+                showStep(currentStep + 1);
+            }
+        }
+
+        // Navigate to previous step
+        function prevStep() {
+            if (currentStep > 1) {
+                // Track step back navigation
+                window.dataLayer.push({
+                    'event': 'step_back',
+                    'from_step': currentStep,
+                    'to_step': currentStep - 1,
+                    'form_id': 'multi_step_cash_offer'
+                });
+
+                showStep(currentStep - 1);
+            }
+        }
+
+        // Save current step data to form data object
+        function saveCurrentStepData() {
+            const currentStepEl = document.getElementById(`step${currentStep}`);
+            const inputs = currentStepEl.querySelectorAll('input');
+            
+            inputs.forEach(input => {
+                if (input.value.trim()) {
+                    formData[input.name] = input.value.trim();
+                }
+            });
+
+            // Also save to localStorage for persistence
+            savePartialSubmission();
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeForm();
+            restorePartialSubmission();
+            trackFieldAbandonment();
+            
+            // Initialize Google Maps API
+            loadGoogleMapsAPI();
+            
+            // Show initial address hint and disable continue button
+            const locationInput = document.getElementById('property-location');
+            const continueBtn = document.getElementById('step1Next');
+            
+            if (locationInput && !locationInput.value.trim()) {
+                showAddressHint();
+            }
+            
+            // Disable continue button initially
+            if (continueBtn) {
+                continueBtn.disabled = true;
+                continueBtn.style.opacity = '0.5';
+            }
+            
+            // Step navigation event listeners
+            document.getElementById('step1Next').addEventListener('click', nextStep);
+            
+            // Track quality signals to prevent spam
+            let interactionCount = 0;
+            let timeOnPage = 0;
+            let hasInteracted = false;
+            
+            // Track time on page
+            setInterval(() => {
+                timeOnPage++;
+            }, 1000);
+            
+            // Track real user interactions
+            ['click', 'touchstart', 'keydown'].forEach(eventType => {
+                document.addEventListener(eventType, function() {
+                    hasInteracted = true;
+                    interactionCount++;
+                }, { once: true });
+            });
+            
+            // Add interaction data to dataLayer before conversion
+            window.addEventListener('beforeunload', function() {
+                if (window.dataLayer) {
+                    window.dataLayer.push({
+                        'user_engagement': {
+                            'time_on_page': timeOnPage,
+                            'interaction_count': interactionCount,
+                            'has_interacted': hasInteracted
+                        }
+                    });
+                }
+            });
+        });
+        
+        // Load Google Maps API with proper error handling
+        function loadGoogleMapsAPI() {
+            // Check if Google Maps is already loaded
+            if (window.google && window.google.maps && window.google.maps.places) {
+                console.log('Google Maps already loaded, initializing autocomplete');
+                initAutocomplete();
+                return;
+            }
+            
+            // Clean up any existing scripts
+            const existingScript = document.querySelector('script[src*="maps.googleapis.com"]');
+            if (existingScript) {
+                existingScript.remove();
+            }
+            
+            // Set up global callback
+            window.initGooglePlaces = function() {
+                console.log('Google Maps callback executed');
+                initAutocomplete();
+            };
+            
+            const script = document.createElement('script');
+            script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&libraries=places&callback=initGooglePlaces&v=weekly`;
+            script.async = true;
+            script.defer = true;
+            script.onload = function() {
+                console.log('Google Maps script loaded successfully');
+            };
+            script.onerror = function() {
+                console.error('Google Maps API failed to load');
+                handleGoogleMapsError();
+            };
+            document.head.appendChild(script);
+        }
+        
+        // Handle Google Maps API loading errors - Safari privacy issues
+        function handleGoogleMapsError() {
+            const locationInput = document.getElementById('property-location');
+            const continueBtn = document.getElementById('step1Next');
+            
+            if (locationInput) {
+                locationInput.placeholder = 'Enter your complete property location';
+                // Allow manual entry when Google Places fails
+                addressSelected = true;
+                hasSelectedFromDropdown = true;
+                
+                // Enable continue button for manual entry
+                if (continueBtn) {
+                    continueBtn.disabled = false;
+                    continueBtn.style.opacity = '1';
+                }
+                
+                console.log('Fallback: Manual address entry enabled due to Google Places unavailable');
+            }
+        }
+        
+        // Clean Google Places Autocomplete implementation
+        function initAutocomplete() {
+            console.log('Initializing Google Places Autocomplete');
+            
+            const locationInput = document.getElementById('property-location');
+            const continueBtn = document.getElementById('step1Next');
+            
+            if (!locationInput) {
+                console.error('Location input not found');
+                handleGoogleMapsError();
+                return;
+            }
+            
+            if (!window.google?.maps?.places?.Autocomplete) {
+                console.error('Google Places not available');
+                handleGoogleMapsError();
+                return;
+            }
+            
+            try {
+                // Clean autocomplete setup
+                const autocomplete = new google.maps.places.Autocomplete(locationInput, {
+                    componentRestrictions: { country: 'us' },
+                    types: ['address']
+                });
+                
+                // Handle selection
+                autocomplete.addListener('place_changed', function() {
+                    const place = autocomplete.getPlace();
+                    
+                    if (place.formatted_address) {
+                        addressSelected = true;
+                        hasSelectedFromDropdown = true;
+                        locationInput.value = place.formatted_address;
+                        
+                        // Validate field to show green background and checkmark
+                        validateField(locationInput);
+                        
+                        // Enable continue button
+                        if (continueBtn) {
+                            continueBtn.disabled = false;
+                            continueBtn.style.opacity = '1';
+                        }
+                        
+                        // Update offer preview
+                        updateOfferPreview(place.formatted_address);
+                        
+                        console.log('Location selected:', place.formatted_address);
+                        
+                        // Track selection
+                        window.dataLayer.push({
+                            'event': 'address_autocomplete_used',
+                            'address': place.formatted_address
+                        });
+                    }
+                });
+                
+                // Reset when user types
+                locationInput.addEventListener('input', function() {
+                    if (addressSelected) {
+                        addressSelected = false;
+                        hasSelectedFromDropdown = false;
+                        
+                        // Reset visual feedback
+                        locationInput.classList.remove('success', 'error');
+                        
+                        // Disable continue button
+                        if (continueBtn) {
+                            continueBtn.disabled = true;
+                            continueBtn.style.opacity = '0.5';
+                        }
+                    }
+                });
+                
+                // iOS Safari touch fix
+                if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g)) {
+                    setTimeout(function() {
+                        const container = document.getElementsByClassName('pac-container')[0];
+                        if (container) {
+                            container.addEventListener('touchend', function(e) {
+                                e.stopImmediatePropagation();
+                            });
+                        }
+                    }, 500);
+                }
+                
+                console.log('Google Places initialized successfully');
+                
+            } catch (error) {
+                console.error('Error initializing Google Places:', error);
+                handleGoogleMapsError();
+            }
+        }
+        
+        // Handle place selection with validation
+        function handlePlaceSelection(autocomplete, input) {
+            const place = autocomplete.getPlace();
+            
+            if (!place || !place.formatted_address) {
+                console.log('No place details available');
+                return;
+            }
+            
+            // Set the address value
+            input.value = place.formatted_address;
+            hasSelectedFromDropdown = true;
+            userTypedAddress = false;
+            
+            // Hide hints and tooltips
+            hideGooglePlacesTooltip();
+            hideAddressHint();
+            
+            // Validate and update UI
+            validateField(input);
+            updateOfferPreview(place.formatted_address);
+            
+            // Track the selection
+            window.dataLayer.push({
+                'event': 'address_autocomplete_used',
+                'address': place.formatted_address,
+                'step_number': currentStep
+            });
+            
+            console.log('Address selected from autocomplete:', place.formatted_address);
+            
+            // Optional: Auto-advance after successful selection (disabled on mobile for better UX)
+            const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            if (validateField(input) && !isMobile) {
+                setTimeout(() => {
+                    if (currentStep === 1) {
+                        nextStep();
+                    }
+                }, 1000);
+            }
+        }
+        
+        // Setup enhanced input event handlers
+        function setupInputHandlers(input) {
+            let typingTimer;
+            const typingDelay = 1000; // 1 second delay
+            
+            input.addEventListener('input', function(e) {
+                const value = e.target.value;
+                
+                // Clear previous timer
+                clearTimeout(typingTimer);
+                
+                // Hide hint when typing
+                hideAddressHint();
+                
+                if (value.length > 0) {
+                    hasSelectedFromDropdown = false;
+                    userTypedAddress = true;
+                    
+                    // Show tooltip after user stops typing
+                    typingTimer = setTimeout(() => {
+                        if (!hasSelectedFromDropdown && value.length > 3) {
+                            showGooglePlacesTooltip();
+                        }
+                    }, typingDelay);
+                } else {
+                    hideGooglePlacesTooltip();
+                    showAddressHint();
+                }
+            });
+            
+            input.addEventListener('focus', function() {
+                hideAddressHint();
+                if (this.value.length === 0) {
+                    // Clear any previous autocomplete state
+                    hasSelectedFromDropdown = false;
+                }
+            });
+            
+            input.addEventListener('blur', function() {
+                hideGooglePlacesTooltip();
+                if (this.value.length === 0) {
+                    setTimeout(() => showAddressHint(), 100);
+                }
+            });
+            
+            // Handle keyboard navigation
+            input.addEventListener('keydown', function(e) {
+                // Clear tooltip when using arrow keys (navigating suggestions)
+                if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+                    hideGooglePlacesTooltip();
+                }
+                
+                // Handle Enter key
+                if (e.key === 'Enter') {
+                    // If dropdown is visible, let Google handle it
+                    const pacContainer = document.querySelector('.pac-container');
+                    if (pacContainer && pacContainer.style.display !== 'none') {
+                        return; // Let Google Places handle the selection
+                    }
+                    
+                    // Otherwise, proceed with form navigation
+                    e.preventDefault();
+                    if (this.value.length >= 5) {
+                        nextStep();
+                    }
+                }
+            });
+        }
+        
+        // Initialize form
+        function initializeForm() {
+            const form = document.getElementById('cashOfferForm');
+            const inputs = form.querySelectorAll('input');
+            const phoneInput = document.getElementById('phone');
+            
+            // Real-time validation with improved email handling
+            inputs.forEach(input => {
+                input.addEventListener('input', () => {
+                    // Special handling for address field
+                    if (input.id === 'address') {
+                        // Don't override the Google Places input handler
+                        return;
+                    }
+                    // For email, validate on every keystroke after @ symbol
+                    else if (input.id === 'email') {
+                        const value = input.value;
+                        if (value.includes('@') && value.includes('.')) {
+                            validateField(input);
+                        } else {
+                            input.classList.remove('success', 'error');
+                        }
+                    } else {
+                        validateField(input);
+                    }
+                });
+                
+                input.addEventListener('blur', () => {
+                    validateField(input);
+                    savePartialSubmission();
+                });
+
+                // Add Enter key navigation
+                input.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        
+                        if (currentStep < totalSteps) {
+                            nextStep();
+                        } else {
+                            // On final step, submit the form
+                            handleSubmit(e);
+                        }
+                    }
+                });
+                
+                // Special handling for email field paste events
+                if (input.id === 'email') {
+                    input.addEventListener('paste', (e) => {
+                        setTimeout(() => validateField(input), 50);
+                    });
+                }
+            });
+            
+            // Phone formatting - improved to handle autofill and +1 prefix
+            phoneInput.addEventListener('focus', function() {
+                // Change placeholder to show format when focused
+                if (!this.value) {
+                    this.placeholder = '(___) ___-____';
+                }
+            });
+            
+            phoneInput.addEventListener('blur', function() {
+                // Restore original placeholder when empty and blurred
+                if (!this.value) {
+                    this.placeholder = 'Phone Number';
+                }
+            });
+            
+            phoneInput.addEventListener('input', function(e) {
+                let input = e.target.value;
+                
+                // Remove all non-digits first
+                let digits = input.replace(/\D/g, '');
+                
+                // Handle +1 prefix (remove it)
+                if (digits.startsWith('1') && digits.length === 11) {
+                    digits = digits.substring(1);
+                }
+                
+                // Limit to 10 digits
+                digits = digits.substring(0, 10);
+                
+                // Format the number
+                let formatted = '';
+                if (digits.length > 0) {
+                    if (digits.length <= 3) {
+                        formatted = `(${digits}`;
+                    } else if (digits.length <= 6) {
+                        formatted = `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+                    } else {
+                        formatted = `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
+                    }
+                }
+                
+                e.target.value = formatted;
+                
+                // Validate in real-time
+                if (digits.length === 10) {
+                    validateField(e.target);
+                }
+            });
+            
+            // Form submission
+            form.addEventListener('submit', handleSubmit);
+        }
+        
+        // Field validation
+        function validateField(input) {
+            const value = input.value.trim();
+            let isValid = false;
+            
+            switch(input.id) {
+                case 'property-location':
+                    // Require dropdown selection for address (or allow manual if Google Places failed)
+                    isValid = value.length >= 5 && addressSelected;
+                    break;
+                case 'email':
+                    // More lenient email validation - just needs @ and .
+                    isValid = value.includes('@') && value.includes('.') && value.length >= 5;
+                    break;
+                case 'firstName':
+                    isValid = value.length >= 2;
+                    break;
+                case 'lastName':
+                    isValid = value.length >= 2;
+                    break;
+                case 'fullName':
+                    isValid = value.length >= 2 && value.includes(' ');
+                    break;
+                case 'phone':
+                    isValid = value.replace(/\D/g, '').length === 10;
+                    break;
+            }
+            
+            if (isValid) {
+                input.classList.remove('error');
+                input.classList.add('success');
+                hideError(input.id);
+            } else if (value.length > 0) {
+                input.classList.add('error');
+                input.classList.remove('success');
+            } else {
+                input.classList.remove('error', 'success');
+            }
+            
+            return isValid;
+        }
+        
+        // Handle form submission
+        async function handleSubmit(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const submitBtn = document.getElementById('submitBtn');
+            
+            // Save final step data
+            saveCurrentStepData();
+            
+            const inputs = form.querySelectorAll('input');
+            let isValid = true;
+            
+            // Validate all fields
+            inputs.forEach(input => {
+                if (!validateField(input)) {
+                    isValid = false;
+                    showError(input.id);
+                }
+            });
+            
+            if (!isValid) return;
+            
+            // Disable submit button immediately
+            submitBtn.disabled = true;
+            
+            // Show loading overlay
+            document.getElementById('loadingOverlay').classList.add('show');
+            
+            // Prepare form data for submission
+            const formDataForSubmission = new FormData();
+            const firstName = formData.firstName || document.getElementById('firstName').value;
+            const lastName = formData.lastName || document.getElementById('lastName').value;
+            const fullName = `${firstName} ${lastName}`.trim();
+            
+            const formDataObj = {
+                email: formData.email || document.getElementById('email').value,
+                phone: formData.phone || document.getElementById('phone').value,
+                fullName: fullName,
+                firstName: firstName,
+                lastName: lastName,
+                address: formData.address || document.getElementById('property-location').value
+            };
+            
+            // Encourage dropdown selection but don't require it
+            if (!hasSelectedFromDropdown && formDataObj.address.length > 5) {
+                console.log('User entered address manually:', formDataObj.address);
+            }
+            
+            // Validate data quality
+            if (!isValidFormData(formDataObj)) {
+                submitBtn.disabled = false;
+                document.getElementById('loadingOverlay').classList.remove('show');
+                alert('Please check your information and try again.');
+                return;
+            }
+            
+            // Add to FormData for submission
+            formDataForSubmission.append('address', formDataObj.address);
+            formDataForSubmission.append('email', formDataObj.email);
+            formDataForSubmission.append('name', formDataObj.fullName);
+            formDataForSubmission.append('firstName', formDataObj.firstName);
+            formDataForSubmission.append('lastName', formDataObj.lastName);
+            formDataForSubmission.append('phone', formDataObj.phone);
+            formDataForSubmission.append('timestamp', new Date().toISOString());
+            formDataForSubmission.append('form_type', 'multi_step_cash_offer');
+            
+            // Track form submission attempt (not conversion yet)
+            window.dataLayer.push({
+                'event': 'form_submission_attempt',
+                'form_id': 'multi_step_cash_offer',
+                'total_steps': totalSteps,
+                'has_selected_dropdown': hasSelectedFromDropdown
+            });
+            
+            console.log('Form submission attempt:', {
+                formData: formDataObj,
+                hasSelectedFromDropdown: hasSelectedFromDropdown,
+                userTypedAddress: userTypedAddress
+            });
+            
+            try {
+                const response = await fetch(FORMSPREE_ENDPOINT, {
+                    method: 'POST',
+                    body: formDataForSubmission,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Clear saved data
+                    localStorage.removeItem('partialSubmission');
+                    localStorage.removeItem('multiStepFormData');
+                    
+                    // Prepare enhanced conversion data
+                    const enhancedData = await prepareEnhancedConversionData(formDataObj);
+                    
+                    // FIXED: Direct gtag enhanced conversions
+                    if (window.gtag) {
+                        gtag('event', 'conversion', {
+                            'send_to': 'AW-17041538947/Mz6WCIDe2dMaEIP_hL4_',
+                            'value': 0,
+                            'currency': 'USD',
+                            'enhanced_conversion_data': {
+                                'email': enhancedData.email,
+                                'phone_number': '+1' + enhancedData.phone.replace(/\D/g, ''),
+                                'first_name': enhancedData.firstName,
+                                'last_name': enhancedData.lastName,
+                                'home_address': {
+                                    'street': enhancedData.address,
+                                    'city': '',
+                                    'region': '',
+                                    'postal_code': '',
+                                    'country': 'US'
+                                }
+                            }
+                        });
+                        console.log('Direct gtag conversion sent with enhanced data');
+                    }
+                    
+                    // Keep existing dataLayer push for GTM compatibility
+                    const targetWindow = window.parent || window;
+                    targetWindow.dataLayer = targetWindow.dataLayer || [];
+                    
+                    targetWindow.dataLayer.push({
+                        'event': 'cash_offer_conversion',  // This MUST match your GTM trigger
+                        'form_type': 'multi_step',
+                        'total_steps': totalSteps,
+                        'conversion_data': {
+                            'conversion_id': '17041538947',
+                            'conversion_label': 'Mz6WCIDe2dMaEIP_hL4_',
+                            'value': 0,
+                            'currency': 'USD'
+                        },
+                        'user_data': {
+                            'email': enhancedData.email,
+                            'phone': enhancedData.phone,
+                            'full_name': enhancedData.fullName,
+                            'first_name': enhancedData.firstName,
+                            'last_name': enhancedData.lastName,
+                            'address': enhancedData.address,
+                            'postal_code': enhancedData.postalCode
+                        },
+                        'enhanced_conversions': enhancedData.enhanced_conversion_data
+                    });
+                    
+                    // Log both for debugging
+                    console.log('Conversion event pushed:', 'cash_offer_conversion');
+                    console.log('Form data submitted:', formDataObj);
+                    console.log('Enhanced conversion data:', enhancedData);
+                    console.log('DataLayer after push:', targetWindow.dataLayer);
+                    
+                    // Also track for GA4
+                    if (window.gtag) {
+                        window.gtag('event', 'generate_lead', {
+                            'currency': 'USD',
+                            'value': 0,
+                            'lead_source': 'multi_step_cash_offer_form'
+                        });
+                    }
+                    
+                    // Show success page
+                    setTimeout(() => {
+                        document.getElementById('loadingOverlay').classList.remove('show');
+                        document.getElementById('formPage').classList.add('hide');
+                        document.getElementById('successPage').classList.add('show');
+                        
+                        // Track success page view
+                        targetWindow.dataLayer.push({
+                            'event': 'virtual_page_view',
+                            'page_path': '/multi-step-cash-offer-success',
+                            'page_title': 'Multi-Step Cash Offer Form Success'
+                        });
+                        
+                        // Scroll to top
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }, 1500);
+                } else {
+                    submitBtn.disabled = false;
+                    throw new Error('Submission failed');
+                }
+            } catch (error) {
+                console.error('Submission error:', error);
+                document.getElementById('loadingOverlay').classList.remove('show');
+                submitBtn.disabled = false;
+                alert('Sorry, there was an error. Please try again.');
+                
+                // Track error
+                window.dataLayer.push({
+                    'event': 'form_error',
+                    'error_message': error.message,
+                    'form_id': 'multi_step_cash_offer',
+                    'current_step': currentStep
+                });
+            }
+        }
+        
+        // Google Places tooltip functions
+        function showGooglePlacesTooltip() {
+            const tooltip = document.getElementById('placesTooltip');
+            if (tooltip) {
+                tooltip.classList.add('show');
+            }
+        }
+
+        function hideGooglePlacesTooltip() {
+            const tooltip = document.getElementById('placesTooltip');
+            if (tooltip) {
+                tooltip.classList.remove('show');
+            }
+        }
+
+        // Address hint functions
+        function showAddressHint() {
+            const hint = document.getElementById('addressHint');
+            if (hint) {
+                hint.classList.add('show');
+            }
+        }
+
+        function hideAddressHint() {
+            const hint = document.getElementById('addressHint');
+            if (hint) {
+                hint.classList.remove('show');
+            }
+        }
+
+        // Enhanced state management functions
+        function showLoadingState() {
+            const loadingEl = document.getElementById('loadingState');
+            if (loadingEl) {
+                loadingEl.textContent = 'Searching for addresses...';
+                loadingEl.classList.add('show');
+                isLoadingResults = true;
+            }
+        }
+
+        function hideLoadingState() {
+            const loadingEl = document.getElementById('loadingState');
+            if (loadingEl) {
+                loadingEl.classList.remove('show');
+                isLoadingResults = false;
+            }
+        }
+
+        function showInlineError() {
+            const errorEl = document.getElementById('inlineError');
+            if (errorEl) {
+                errorEl.classList.add('show');
+            }
+        }
+
+        function hideInlineError() {
+            const errorEl = document.getElementById('inlineError');
+            if (errorEl) {
+                errorEl.classList.remove('show');
+            }
+        }
+
+        function highlightDropdownSuggestions() {
+            const pacContainer = document.querySelector('.pac-container');
+            if (pacContainer) {
+                pacContainer.style.animation = 'pulse 0.6s ease';
+                setTimeout(() => {
+                    if (pacContainer) {
+                        pacContainer.style.animation = '';
+                    }
+                }, 600);
+            }
+        }
+
+        // Update offer preview with selected address
+        function updateOfferPreview(address) {
+            const offerAddressEl = document.getElementById('offerAddress');
+            if (offerAddressEl && address) {
+                offerAddressEl.textContent = address;
+                console.log('Updated offer preview with address:', address);
+            }
+        }
+
+        // Save partial submission
+        function savePartialSubmission() {
+            const data = {
+                address: document.getElementById('property-location').value,
+                email: document.getElementById('email').value,
+                firstName: document.getElementById('firstName')?.value || '',
+                lastName: document.getElementById('lastName')?.value || '',
+                phone: document.getElementById('phone').value,
+                currentStep: currentStep,
+                timestamp: new Date().toISOString()
+            };
+            
+            localStorage.setItem('partialSubmission', JSON.stringify(data));
+            localStorage.setItem('multiStepFormData', JSON.stringify(formData));
+        }
+        
+        // Restore partial submission
+        function restorePartialSubmission() {
+            const saved = localStorage.getItem('partialSubmission');
+            const savedStepData = localStorage.getItem('multiStepFormData');
+            
+            if (saved) {
+                try {
+                    const data = JSON.parse(saved);
+                    
+                    // Only restore if less than 24 hours old
+                    const savedTime = new Date(data.timestamp);
+                    const now = new Date();
+                    const hoursDiff = (now - savedTime) / (1000 * 60 * 60);
+                    
+                    if (hoursDiff < 24) {
+                        if (data.address) {
+                            document.getElementById('property-location').value = data.address;
+                            updateOfferPreview(data.address);
+                        }
+                        if (data.email) document.getElementById('email').value = data.email;
+                        if (data.firstName) document.getElementById('firstName').value = data.firstName;
+                        if (data.lastName) document.getElementById('lastName').value = data.lastName;
+                        if (data.phone) document.getElementById('phone').value = data.phone;
+                        
+                        // Restore step data
+                        if (savedStepData) {
+                            const stepData = JSON.parse(savedStepData);
+                            Object.assign(formData, stepData);
+                        }
+                        
+                        // Restore current step
+                        if (data.currentStep && data.currentStep > 1 && data.currentStep <= totalSteps) {
+                            showStep(data.currentStep);
+                        }
+                        
+                        // Validate restored fields
+                        ['property-location', 'email', 'firstName', 'lastName', 'phone'].forEach(id => {
+                            const input = document.getElementById(id);
+                            if (input && input.value) validateField(input);
+                        });
+                    }
+                } catch (e) {
+                    console.error('Error restoring form data:', e);
+                }
+            }
+        }
+        
+        // Track field abandonment
+        function trackFieldAbandonment() {
+            const inputs = document.querySelectorAll('input');
+            
+            inputs.forEach(input => {
+                let hasInteracted = false;
+                
+                input.addEventListener('focus', () => {
+                    hasInteracted = true;
+                    window.dataLayer.push({
+                        'event': 'field_focused',
+                        'field_name': input.id,
+                        'form_id': 'multi_step_cash_offer',
+                        'step_number': currentStep
+                    });
+                });
+                
+                input.addEventListener('blur', () => {
+                    if (hasInteracted && !input.value.trim()) {
+                        window.dataLayer.push({
+                            'event': 'field_abandoned',
+                            'field_name': input.id,
+                            'form_id': 'multi_step_cash_offer',
+                            'step_number': currentStep
+                        });
+                    }
+                });
+            });
+        }
+        
+        // Error handling
+        function showError(inputId) {
+            const errorEl = document.getElementById(inputId + 'Error');
+            if (errorEl) errorEl.classList.add('show');
+        }
+        
+        function hideError(inputId) {
+            const errorEl = document.getElementById(inputId + 'Error');
+            if (errorEl) errorEl.classList.remove('show');
+        }
+        
+        // GA4 event tracking helper (keeping for backward compatibility)
+        function pushGA4Event(eventName, parameters = {}) {
+            if (window.gtag) {
+                window.gtag('event', eventName, parameters);
+            }
+        }
+    </script>
+</body>
+</html>

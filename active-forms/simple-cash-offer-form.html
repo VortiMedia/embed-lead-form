@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get a cash offer for your home in 24 hours. No repairs, no showings, close in 7 days.">
+    <title>Get Cash for Your Home - Fast, Fair Offer</title>
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5C5G6JMZ');</script>
+    <!-- End Google Tag Manager -->
+    
+    <!-- Preconnect to Google Fonts and APIs -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://maps.googleapis.com">
+    
+    <!-- Critical CSS inline for performance -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.5;
+            color: #111827;
+            background: transparent;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 440px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 32px 24px;
+            position: relative;
+        }
+        
+        .form-group {
+            margin-bottom: 16px;
+            position: relative;
+        }
+        
+        input {
+            width: 100%;
+            height: 54px;
+            padding: 0 20px;
+            padding-right: 50px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: inherit;
+            background: #ffffff;
+            transition: all 0.2s ease;
+            color: #111827;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        
+        input:hover {
+            border-color: #d1d5db;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #E8743B;
+            box-shadow: 0 0 0 3px rgba(232, 116, 59, 0.1);
+        }
+        
+        input::placeholder {
+            color: #9ca3af;
+        }
+        
+        input.error {
+            border-color: #ef4444;
+            background-color: #fef2f2;
+        }
+        
+        input.success {
+            border-color: #10b981;
+            background-color: #f0fdf4;
+        }
+        
+        .checkmark {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            background: #10b981;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        input.success ~ .checkmark {
+            display: flex;
+        }
+        
+        .error-message {
+            color: #ef4444;
+            font-size: 13px;
+            margin-top: 6px;
+            display: none;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+        
+        .btn {
+            width: 100%;
+            height: 56px;
+            background: #E8743B;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            letter-spacing: -0.01em;
+            margin-top: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:hover:not(:disabled) {
+            background: #d6692f;
+            transform: translateY(-1px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .btn:active {
+            transform: scale(0.98);
+        }
+        
+        .btn:disabled {
+            background: #e5e7eb;
+            color: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .btn svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .trust-badges {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #374151;
+        }
+        
+        .trust-badge svg {
+            width: 20px;
+            height: 20px;
+            color: #10b981;
+            flex-shrink: 0;
+        }
+        
+        .disclaimer {
+            font-size: 11px;
+            color: #9ca3af;
+            text-align: center;
+            margin-top: 16px;
+            line-height: 1.4;
+        }
+        
+        .disclaimer a {
+            color: #E8743B;
+            text-decoration: underline;
+        }
+        
+        .disclaimer a:hover {
+            color: #d6692f;
+        }
+        
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.95);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: 1000;
+        }
+        
+        .loading-overlay.show {
+            display: flex;
+        }
+        
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 3px solid #f3f4f6;
+            border-top-color: #E8743B;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-bottom: 16px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            font-size: 16px;
+            color: #374151;
+            font-weight: 500;
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 480px) {
+            body {
+                padding: 16px;
+            }
+            
+            .container {
+                padding: 24px 16px;
+            }
+            
+            .btn {
+                position: sticky;
+                bottom: 16px;
+                z-index: 10;
+            }
+        }
+        
+        /* Lazy load optimization */
+        .lazy {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .lazy.loaded {
+            opacity: 1;
+        }
+        
+        /* Success page styles */
+        .success-page {
+            display: none;
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        .success-page.show {
+            display: block;
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            animation: successPulse 0.6s ease;
+        }
+        
+        .success-icon svg {
+            width: 40px;
+            height: 40px;
+            color: white;
+        }
+        
+        @keyframes successPulse {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .success-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        
+        .success-subtitle {
+            font-size: 16px;
+            color: #6b7280;
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+        
+        .next-steps {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            text-align: left;
+        }
+        
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .step-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .step-number {
+            width: 24px;
+            height: 24px;
+            background: #E8743B;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        
+        .step-text {
+            font-size: 14px;
+            color: #374151;
+            line-height: 1.5;
+        }
+        
+        .step-text strong {
+            font-weight: 600;
+            color: #111827;
+        }
+        
+        .contact-card {
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 24px;
+        }
+        
+        .contact-card-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+        
+        .contact-phone {
+            font-size: 20px;
+            font-weight: 700;
+            color: #E8743B;
+            margin-bottom: 4px;
+        }
+        
+        .contact-note {
+            font-size: 13px;
+            color: #6b7280;
+        }
+        
+        .form-page {
+            display: block;
+        }
+        
+        .form-page.hide {
+            display: none;
+        }
+    </style>
+    
+    <!-- Google Tag Manager -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {
+            'analytics_storage': 'granted',
+            'ad_storage': 'granted'
+        });
+    </script>
+    
+    <!-- FIXED: Direct Google Ads Enhanced Conversions Setup -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17041538947"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('config', 'AW-17041538947', {
+            'enhanced_conversions': true
+        });
+    </script>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5C5G6JMZ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="container">
+        <!-- Form Page -->
+        <div class="form-page" id="formPage">
+            <form id="cashOfferForm">
+            <div class="form-group">
+                <input 
+                    type="text" 
+                    id="address" 
+                    name="address" 
+                    placeholder="Property Address" 
+                    required 
+                    autocomplete="off"
+                >
+                <div class="checkmark">✓</div>
+                <div class="error-message" id="addressError">Please enter a valid address</div>
+            </div>
+            
+            <div class="form-group">
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    placeholder="Email Address" 
+                    required 
+                    autocomplete="email"
+                >
+                <div class="checkmark">✓</div>
+                <div class="error-message" id="emailError">Please enter a valid email address</div>
+            </div>
+            
+            <div class="form-group">
+                <input 
+                    type="tel" 
+                    id="phone" 
+                    name="phone" 
+                    placeholder="Phone Number" 
+                    required 
+                    autocomplete="tel"
+                    inputmode="tel"
+                >
+                <div class="checkmark">✓</div>
+                <div class="error-message" id="phoneError">Please enter a valid phone number</div>
+            </div>
+            
+            <div class="form-group">
+                <input 
+                    type="text" 
+                    id="fullName" 
+                    name="fullName" 
+                    placeholder="Full Name" 
+                    required 
+                    autocomplete="name"
+                >
+                <div class="checkmark">✓</div>
+                <div class="error-message" id="nameError">Please enter your full name</div>
+            </div>
+            
+            
+            <button type="submit" class="btn" id="submitBtn">
+                Get My Cash Offer
+                <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            
+            <div style="text-align: center; margin-top: 12px; font-size: 13px; color: #6b7280; font-weight: 500;">
+                No obligation, no fees
+            </div>
+        </form>
+        
+        <div class="trust-badges">
+            <div class="trust-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>500+ homes bought in CT/NY since 2019</span>
+            </div>
+            <div class="trust-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>$1M+ proof of funds available</span>
+            </div>
+        </div>
+        
+            <div class="disclaimer">
+                <p style="margin-bottom: 12px;">
+                    By pressing "Get My Cash Offer," I consent to receive marketing calls/texts from Pace Home Buyers at the number provided via automated technology, including artificial voice and SMS. Consent not required to receive offer. Msg & data rates apply. Reply STOP to cancel.
+                </p>
+                
+                <p style="margin-bottom: 12px;">
+                    By submitting, I understand: (1) Pace Home Buyers is a direct cash buyer, not representing my interests as an agent; (2) Offers may be below market value; (3) 24-hour timeline subject to property verification; (4) CT sellers receive $500 credit if no property condition report provided.
+                </p>
+                
+                <p>
+                    My information will be used per our <a href="https://sell.pacehomebuyers.com/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and <a href="https://sell.pacehomebuyers.com/terms-of-service" target="_blank" rel="noopener noreferrer">Terms of Service</a>. I may revoke consent anytime. CA residents: Do Not Sell My Info.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Success Page -->
+        <div class="success-page" id="successPage">
+            <div class="success-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+            </div>
+            
+            <h2 class="success-title">Form Received!</h2>
+            <p class="success-subtitle">Rich will call you within 30 minutes from<br>(914) 223-8317</p>
+            
+            <div class="next-steps">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-text">
+                        <strong>Within 30 minutes:</strong> Rich will call to discuss your property and answer any questions
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-text">
+                        <strong>Within 24 hours:</strong> You'll receive your personalized cash offer based on current market conditions
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-text">
+                        <strong>Close in 7 days:</strong> Or choose your preferred timeline - we work around your schedule
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-card-title">Save this number:</div>
+                <div class="contact-phone">(914) 223-8317</div>
+                <div class="contact-note">Add to contacts to ensure you don't miss our call</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <div class="loading-text">Analyzing property value...</div>
+    </div>
+
+    <script>
+        // Initialize dataLayer
+        window.dataLayer = window.dataLayer || [];
+
+        // SHA256 hashing function for enhanced conversions
+        async function hashString(string) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(string.toLowerCase().trim());
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            return hashHex;
+        }
+
+        // Enhanced conversion data formatter
+        async function prepareEnhancedConversionData(formData) {
+            const email = formData.email.toLowerCase().trim();
+            const phone = formData.phone.replace(/\D/g, ''); // Remove non-digits
+            const fullName = formData.fullName.trim();
+            const nameParts = fullName.split(' ');
+            const firstName = nameParts[0] || '';
+            const lastName = nameParts.slice(1).join(' ') || '';
+            const address = formData.address.trim();
+            const postalCode = ''; // ZIP code removed to improve conversion rates
+            
+            // Hash sensitive data
+            const hashedEmail = await hashString(email);
+            const hashedPhone = await hashString('+1' + phone); // Add US country code
+            
+            return {
+                // Raw data for GTM variables
+                email: email,
+                phone: phone,
+                fullName: fullName,
+                firstName: firstName,
+                lastName: lastName,
+                address: address,
+                postalCode: postalCode,
+                
+                // Hashed data for enhanced conversions
+                enhanced_conversion_data: {
+                    email: hashedEmail,
+                    phone_number: hashedPhone,
+                    address: {
+                        first_name: firstName,
+                        last_name: lastName,
+                        street: address,
+                        postal_code: postalCode,
+                        country: 'US'
+                    }
+                }
+            };
+        }
+
+        // Validate form data before tracking conversion
+        function isValidFormData(formData) {
+            // Email validation - more lenient for custom domains
+            const email = formData.email.trim();
+            if (!email.includes('@') || !email.includes('.') || email.length < 5) return false;
+            
+            // Phone validation (10 digits)
+            const phoneDigits = formData.phone.replace(/\D/g, '');
+            if (phoneDigits.length !== 10) return false;
+            
+            // Name validation (at least first name)
+            if (!formData.fullName || formData.fullName.trim().length < 2) return false;
+            
+            // Address validation (at least 5 characters)
+            if (!formData.address || formData.address.trim().length < 5) return false;
+            
+            
+            return true;
+        }
+
+        // Configuration
+        const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xblyrjpg';
+        const GOOGLE_MAPS_API_KEY = 'AIzaSyChsAghoLBZ_2uOwtOil9qhDG_tQdsDuTM';
+        
+        // Removed testimonials
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // One-time submission check temporarily disabled for testing
+            
+            initializeForm();
+            loadGoogleMapsAPI();
+            restorePartialSubmission();
+            trackFieldAbandonment();
+            
+            // Track quality signals to prevent spam
+            let interactionCount = 0;
+            let timeOnPage = 0;
+            let hasInteracted = false;
+            
+            // Track time on page
+            setInterval(() => {
+                timeOnPage++;
+            }, 1000);
+            
+            // Track real user interactions
+            ['click', 'touchstart', 'keydown'].forEach(eventType => {
+                document.addEventListener(eventType, function() {
+                    hasInteracted = true;
+                    interactionCount++;
+                }, { once: true });
+            });
+            
+            // Add interaction data to dataLayer before conversion
+            window.addEventListener('beforeunload', function() {
+                if (window.dataLayer) {
+                    window.dataLayer.push({
+                        'user_engagement': {
+                            'time_on_page': timeOnPage,
+                            'interaction_count': interactionCount,
+                            'has_interacted': hasInteracted
+                        }
+                    });
+                }
+            });
+        });
+        
+        // Testimonials removed
+        
+        // Load Google Maps API
+        function loadGoogleMapsAPI() {
+            const script = document.createElement('script');
+            script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&libraries=places&callback=initAutocomplete`;
+            script.async = true;
+            script.defer = true;
+            script.onerror = function() {
+                console.log('Google Maps API failed to load');
+            };
+            document.head.appendChild(script);
+        }
+        
+        // Google Places Autocomplete
+        function initAutocomplete() {
+            const addressInput = document.getElementById('address');
+            if (!addressInput || !window.google) return;
+            
+            try {
+                const autocomplete = new google.maps.places.Autocomplete(addressInput, {
+                    types: ['address'],
+                    componentRestrictions: { country: 'us' }
+                });
+                
+                autocomplete.setFields(['formatted_address']);
+                
+                autocomplete.addListener('place_changed', function() {
+                    const place = autocomplete.getPlace();
+                    if (place.formatted_address) {
+                        addressInput.value = place.formatted_address;
+                        validateField(addressInput);
+                        // updateDynamicAddress(place.formatted_address); // No longer needed
+                        
+                        // Track autocomplete usage
+                        window.dataLayer.push({
+                            'event': 'address_autocomplete_used',
+                            'address': place.formatted_address
+                        });
+                    }
+                });
+            } catch (error) {
+                console.log('Google Places initialization error:', error);
+            }
+        }
+        
+        // Update dynamic address in headline (removed)
+        function updateDynamicAddress(address) {
+            // Function no longer needed
+        }
+        
+        // Initialize form
+        function initializeForm() {
+            const form = document.getElementById('cashOfferForm');
+            const inputs = form.querySelectorAll('input');
+            const phoneInput = document.getElementById('phone');
+            
+            // Real-time validation with improved email handling
+            inputs.forEach(input => {
+                input.addEventListener('input', () => {
+                    // For email, validate on every keystroke after @ symbol
+                    if (input.id === 'email') {
+                        const value = input.value;
+                        if (value.includes('@') && value.includes('.')) {
+                            validateField(input);
+                        } else {
+                            input.classList.remove('success', 'error');
+                        }
+                    } else {
+                        validateField(input);
+                    }
+                });
+                
+                input.addEventListener('blur', () => {
+                    validateField(input);
+                    savePartialSubmission();
+                });
+                
+                // Special handling for email field paste events
+                if (input.id === 'email') {
+                    input.addEventListener('paste', (e) => {
+                        setTimeout(() => validateField(input), 50);
+                    });
+                }
+            });
+            
+            // Phone formatting - improved to handle autofill and +1 prefix
+            phoneInput.addEventListener('focus', function() {
+                // Change placeholder to show format when focused
+                if (!this.value) {
+                    this.placeholder = '(___) ___-____';
+                }
+            });
+            
+            phoneInput.addEventListener('blur', function() {
+                // Restore original placeholder when empty and blurred
+                if (!this.value) {
+                    this.placeholder = 'Phone Number';
+                }
+            });
+            
+            phoneInput.addEventListener('input', function(e) {
+                let input = e.target.value;
+                
+                // Remove all non-digits first
+                let digits = input.replace(/\D/g, '');
+                
+                // Handle +1 prefix (remove it)
+                if (digits.startsWith('1') && digits.length === 11) {
+                    digits = digits.substring(1);
+                }
+                
+                // Limit to 10 digits
+                digits = digits.substring(0, 10);
+                
+                // Format the number
+                let formatted = '';
+                if (digits.length > 0) {
+                    if (digits.length <= 3) {
+                        formatted = `(${digits}`;
+                    } else if (digits.length <= 6) {
+                        formatted = `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+                    } else {
+                        formatted = `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
+                    }
+                }
+                
+                e.target.value = formatted;
+                
+                // Validate in real-time
+                if (digits.length === 10) {
+                    validateField(e.target);
+                }
+            });
+            
+            // Form submission
+            form.addEventListener('submit', handleSubmit);
+        }
+        
+        // Field validation
+        function validateField(input) {
+            const value = input.value.trim();
+            let isValid = false;
+            
+            switch(input.id) {
+                case 'address':
+                    isValid = value.length >= 5;
+                    break;
+                case 'email':
+                    // More lenient email validation - just needs @ and .
+                    isValid = value.includes('@') && value.includes('.') && value.length >= 5;
+                    break;
+                case 'fullName':
+                    isValid = value.length >= 2 && value.includes(' ');
+                    break;
+                case 'phone':
+                    isValid = value.replace(/\D/g, '').length === 10;
+                    break;
+            }
+            
+            if (isValid) {
+                input.classList.remove('error');
+                input.classList.add('success');
+                hideError(input.id);
+            } else if (value.length > 0) {
+                input.classList.add('error');
+                input.classList.remove('success');
+            } else {
+                input.classList.remove('error', 'success');
+            }
+            
+            return isValid;
+        }
+        
+        // Handle form submission
+        async function handleSubmit(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const submitBtn = document.getElementById('submitBtn');
+            
+            // One-time submission check temporarily disabled
+            
+            const inputs = form.querySelectorAll('input');
+            let isValid = true;
+            
+            // Validate all fields
+            inputs.forEach(input => {
+                if (!validateField(input)) {
+                    isValid = false;
+                    showError(input.id);
+                }
+            });
+            
+            if (!isValid) return;
+            
+            // Disable submit button immediately
+            submitBtn.disabled = true;
+            
+            // Show loading overlay
+            document.getElementById('loadingOverlay').classList.add('show');
+            
+            // Prepare form data
+            const formData = new FormData();
+            const formDataObj = {
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                fullName: document.getElementById('fullName').value,
+                address: document.getElementById('address').value
+            };
+            
+            // Validate data quality
+            if (!isValidFormData(formDataObj)) {
+                submitBtn.disabled = false;
+                document.getElementById('loadingOverlay').classList.remove('show');
+                alert('Please check your information and try again.');
+                return;
+            }
+            
+            // Add to FormData for submission
+            formData.append('address', formDataObj.address);
+            formData.append('email', formDataObj.email);
+            formData.append('name', formDataObj.fullName);
+            formData.append('phone', formDataObj.phone);
+            formData.append('timestamp', new Date().toISOString());
+            
+            // Track form submission attempt (not conversion yet)
+            window.dataLayer.push({
+                'event': 'form_submission_attempt',
+                'form_id': 'cash_offer_form'
+            });
+            
+            try {
+                const response = await fetch(FORMSPREE_ENDPOINT, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // One-time submission tracking temporarily disabled
+                    
+                    // Clear saved data
+                    localStorage.removeItem('partialSubmission');
+                    
+                    // Prepare enhanced conversion data
+                    const enhancedData = await prepareEnhancedConversionData(formDataObj);
+                    
+                    // FIXED: Direct gtag enhanced conversions
+                    if (window.gtag) {
+                        gtag('event', 'conversion', {
+                            'send_to': 'AW-17041538947/Mz6WCIDe2dMaEIP_hL4_',
+                            'value': 0,
+                            'currency': 'USD',
+                            'enhanced_conversion_data': {
+                                'email': enhancedData.email,
+                                'phone_number': '+1' + enhancedData.phone.replace(/\D/g, ''),
+                                'first_name': enhancedData.firstName,
+                                'last_name': enhancedData.lastName,
+                                'home_address': {
+                                    'street': enhancedData.address,
+                                    'city': '',
+                                    'region': '',
+                                    'postal_code': '',
+                                    'country': 'US'
+                                }
+                            }
+                        });
+                        console.log('Direct gtag conversion sent with enhanced data');
+                    }
+                    
+                    // Keep existing dataLayer push for GTM compatibility
+                    const targetWindow = window.parent || window;
+                    targetWindow.dataLayer = targetWindow.dataLayer || [];
+                    
+                    targetWindow.dataLayer.push({
+                        'event': 'cash_offer_conversion',  // This MUST match your GTM trigger
+                        'conversion_data': {
+                            'conversion_id': '17041538947',
+                            'conversion_label': 'Mz6WCIDe2dMaEIP_hL4_',
+                            'value': 0,
+                            'currency': 'USD'
+                        },
+                        'user_data': {
+                            'email': enhancedData.email,
+                            'phone': enhancedData.phone,
+                            'full_name': enhancedData.fullName,
+                            'first_name': enhancedData.firstName,
+                            'last_name': enhancedData.lastName,
+                            'address': enhancedData.address,
+                            'postal_code': enhancedData.postalCode
+                        },
+                        'enhanced_conversions': enhancedData.enhanced_conversion_data
+                    });
+                    
+                    // Log both for debugging
+                    console.log('Conversion event pushed:', 'cash_offer_conversion');
+                    console.log('DataLayer after push:', targetWindow.dataLayer);
+                    
+                    // Also track for GA4
+                    if (window.gtag) {
+                        window.gtag('event', 'generate_lead', {
+                            'currency': 'USD',
+                            'value': 0,
+                            'lead_source': 'cash_offer_form'
+                        });
+                    }
+                    
+                    // Show success page
+                    setTimeout(() => {
+                        document.getElementById('loadingOverlay').classList.remove('show');
+                        document.getElementById('formPage').classList.add('hide');
+                        document.getElementById('successPage').classList.add('show');
+                        
+                        // Track success page view
+                        targetWindow.dataLayer.push({
+                            'event': 'virtual_page_view',
+                            'page_path': '/cash-offer-success',
+                            'page_title': 'Cash Offer Form Success'
+                        });
+                        
+                        // Scroll to top
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }, 1500);
+                } else {
+                    submitBtn.disabled = false;
+                    throw new Error('Submission failed');
+                }
+            } catch (error) {
+                console.error('Submission error:', error);
+                document.getElementById('loadingOverlay').classList.remove('show');
+                submitBtn.disabled = false;
+                alert('Sorry, there was an error. Please try again.');
+                
+                // Track error
+                window.dataLayer.push({
+                    'event': 'form_error',
+                    'error_message': error.message,
+                    'form_id': 'cash_offer_form'
+                });
+            }
+        }
+        
+        // Save partial submission
+        function savePartialSubmission() {
+            const data = {
+                address: document.getElementById('address').value,
+                email: document.getElementById('email').value,
+                name: document.getElementById('fullName').value,
+                phone: document.getElementById('phone').value,
+                timestamp: new Date().toISOString()
+            };
+            
+            localStorage.setItem('partialSubmission', JSON.stringify(data));
+        }
+        
+        // Restore partial submission
+        function restorePartialSubmission() {
+            const saved = localStorage.getItem('partialSubmission');
+            if (saved) {
+                try {
+                    const data = JSON.parse(saved);
+                    
+                    // Only restore if less than 24 hours old
+                    const savedTime = new Date(data.timestamp);
+                    const now = new Date();
+                    const hoursDiff = (now - savedTime) / (1000 * 60 * 60);
+                    
+                    if (hoursDiff < 24) {
+                        if (data.address) document.getElementById('address').value = data.address;
+                        if (data.email) document.getElementById('email').value = data.email;
+                        if (data.name) document.getElementById('fullName').value = data.name;
+                        if (data.phone) document.getElementById('phone').value = data.phone;
+                        
+                        // Validate restored fields
+                        ['address', 'email', 'fullName', 'phone'].forEach(id => {
+                            const input = document.getElementById(id);
+                            if (input.value) validateField(input);
+                        });
+                    }
+                } catch (e) {
+                    console.error('Error restoring form data:', e);
+                }
+            }
+        }
+        
+        // Track field abandonment
+        function trackFieldAbandonment() {
+            const inputs = document.querySelectorAll('input');
+            
+            inputs.forEach(input => {
+                let hasInteracted = false;
+                
+                input.addEventListener('focus', () => {
+                    hasInteracted = true;
+                    window.dataLayer.push({
+                        'event': 'field_focused',
+                        'field_name': input.id,
+                        'form_id': 'cash_offer_form'
+                    });
+                });
+                
+                input.addEventListener('blur', () => {
+                    if (hasInteracted && !input.value.trim()) {
+                        window.dataLayer.push({
+                            'event': 'field_abandoned',
+                            'field_name': input.id,
+                            'form_id': 'cash_offer_form'
+                        });
+                    }
+                });
+            });
+        }
+        
+        // Error handling
+        function showError(inputId) {
+            const errorEl = document.getElementById(inputId + 'Error');
+            if (errorEl) errorEl.classList.add('show');
+        }
+        
+        function hideError(inputId) {
+            const errorEl = document.getElementById(inputId + 'Error');
+            if (errorEl) errorEl.classList.remove('show');
+        }
+        
+        // GA4 event tracking helper (keeping for backward compatibility)
+        function pushGA4Event(eventName, parameters = {}) {
+            if (window.gtag) {
+                window.gtag('event', eventName, parameters);
+            }
+        }
+    </script>
+</body>
+</html>

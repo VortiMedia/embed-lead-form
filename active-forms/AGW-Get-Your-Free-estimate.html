@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional painting services in Westchester & Fairfield County. Get a free, no-obligation estimate in 24 hours.">
+    <title>Get Your Free Home Painting Estimate - A.G. Williams Painting</title>
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5C5G6JMZ');</script>
+    <!-- End Google Tag Manager -->
+    
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    
+    <!-- Critical CSS inline for performance -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.5;
+            color: #111827;
+            background: transparent;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 440px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 32px 24px;
+            position: relative;
+        }
+        
+        .form-group {
+            margin-bottom: 16px;
+            position: relative;
+        }
+        
+        input {
+            width: 100%;
+            height: 54px;
+            padding: 0 20px;
+            padding-right: 50px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: inherit;
+            background: #ffffff;
+            transition: all 0.2s ease;
+            color: #111827;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        
+        input:hover {
+            border-color: #d1d5db;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #0163B0;
+            box-shadow: 0 0 0 3px rgba(1, 99, 176, 0.1);
+        }
+        
+        input::placeholder {
+            color: #9ca3af;
+        }
+        
+        input.error {
+            border-color: #ef4444;
+            background-color: #fef2f2;
+        }
+        
+        input.success {
+            border-color: #10b981;
+            background-color: #f0fdf4;
+        }
+        
+        .checkmark {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            background: #10b981;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        input.success ~ .checkmark {
+            display: flex;
+        }
+        
+        .error-message {
+            color: #ef4444;
+            font-size: 13px;
+            margin-top: 6px;
+            display: none;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+        
+        .btn {
+            width: 100%;
+            height: 56px;
+            background: #0163B0;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            letter-spacing: -0.01em;
+            margin-top: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:hover:not(:disabled) {
+            background: #014d89;
+            transform: translateY(-1px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .btn:active {
+            transform: scale(0.98);
+        }
+        
+        .btn:disabled {
+            background: #e5e7eb;
+            color: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .btn svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .trust-badges {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #374151;
+        }
+        
+        .trust-badge svg {
+            width: 20px;
+            height: 20px;
+            color: #10b981;
+            flex-shrink: 0;
+        }
+        
+        .disclaimer {
+            font-size: 11px;
+            color: #9ca3af;
+            text-align: center;
+            margin-top: 16px;
+            line-height: 1.4;
+        }
+        
+        .disclaimer a {
+            color: #0163B0;
+            text-decoration: underline;
+        }
+        
+        .disclaimer a:hover {
+            color: #014d89;
+        }
+        
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.95);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: 1000;
+        }
+        
+        .loading-overlay.show {
+            display: flex;
+        }
+        
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 3px solid #f3f4f6;
+            border-top-color: #0163B0;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-bottom: 16px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            font-size: 16px;
+            color: #374151;
+            font-weight: 500;
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 480px) {
+            body {
+                padding: 16px;
+            }
+            
+            .container {
+                padding: 24px 16px;
+            }
+            
+            .btn {
+                position: sticky;
+                bottom: 16px;
+                z-index: 10;
+            }
+        }
+        
+        /* Lazy load optimization */
+        .lazy {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .lazy.loaded {
+            opacity: 1;
+        }
+        
+        /* Success page styles */
+        .success-page {
+            display: none;
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        .success-page.show {
+            display: block;
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            animation: successPulse 0.6s ease;
+        }
+        
+        .success-icon svg {
+            width: 40px;
+            height: 40px;
+            color: white;
+        }
+        
+        @keyframes successPulse {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .success-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        
+        .success-subtitle {
+            font-size: 16px;
+            color: #6b7280;
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+        
+        .next-steps {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            text-align: left;
+        }
+        
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .step-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .step-number {
+            width: 24px;
+            height: 24px;
+            background: #0163B0;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        
+        .step-text {
+            font-size: 14px;
+            color: #374151;
+            line-height: 1.5;
+        }
+        
+        .step-text strong {
+            font-weight: 600;
+            color: #111827;
+        }
+        
+        .contact-card {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 24px;
+        }
+        
+        .contact-card-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+        
+        .contact-phone {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0163B0;
+            margin-bottom: 4px;
+        }
+        
+        .contact-note {
+            font-size: 13px;
+            color: #6b7280;
+        }
+        
+        .form-page {
+            display: block;
+        }
+        
+        .form-page.hide {
+            display: none;
+        }
+    </style>
+    
+    <!-- Google Tag Manager -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {
+            'analytics_storage': 'granted',
+            'ad_storage': 'granted'
+        });
+    </script>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5C5G6JMZ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="container">
+        <!-- Form Page -->
+        <div class="form-page" id="formPage">
+            <form id="paintingEstimateForm">
+            <div class="form-group">
+                <input 
+                    type="text" 
+                    id="fullName" 
+                    name="fullName" 
+                    placeholder="Your Full Name" 
+                    required 
+                    autocomplete="name"
+                >
+                <div class="checkmark">✓</div>
+                <div class="error-message" id="nameError">Please enter your full name</div>
+            </div>
+            
+            <div class="form-group">
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    placeholder="Email Address" 
+                    required 
+                    autocomplete="email"
+                >
+                <div class="checkmark">✓</div>
+                <div class="error-message" id="emailError">Please enter a valid email address</div>
+            </div>
+            
+            <div class="form-group">
+                <input 
+                    type="tel" 
+                    id="phone" 
+                    name="phone" 
+                    placeholder="Phone Number (for your estimate)" 
+                    required 
+                    autocomplete="tel"
+                    inputmode="tel"
+                >
+                <div class="checkmark">✓</div>
+                <div class="error-message" id="phoneError">Please enter a valid phone number</div>
+            </div>
+            
+            <div class="form-group">
+                <input 
+                    type="text" 
+                    id="postalCode" 
+                    name="postalCode" 
+                    placeholder="ZIP Code of Your Home" 
+                    required 
+                    autocomplete="postal-code"
+                    inputmode="numeric"
+                    maxlength="5"
+                >
+                <div class="checkmark">✓</div>
+                <div class="error-message" id="postalCodeError">Please enter a valid 5-digit ZIP code</div>
+            </div>
+            
+            
+            <button type="submit" class="btn" id="submitBtn">
+                Get My Free Estimate Now
+                <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            
+            <div style="text-align: center; margin-top: 12px; font-size: 13px; color: #6b7280; font-weight: 500;">
+                Free estimate • No obligation
+            </div>
+        </form>
+        
+        <div class="trust-badges">
+            <div class="trust-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>1,000+ homes painted in Westchester/Fairfield</span>
+            </div>
+            <div class="trust-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>Licensed & insured painting professionals</span>
+            </div>
+        </div>
+        
+            <div class="disclaimer">
+                <p>
+                    By clicking "Get My Free Estimate Now," you agree to our Privacy Policy. By providing your email address and phone number, you expressly consent to receive marketing calls/texts and emails from A.G. Williams Painting at the contact information you provided, regarding our painting services and related offers. This consent is not required to purchase any goods or services. Message and data rates may apply. Text HELP for help or STOP to cancel.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Success Page -->
+        <div class="success-page" id="successPage">
+            <div class="success-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+            </div>
+            
+            <h2 class="success-title">Estimate Request Received!</h2>
+            <p class="success-subtitle">We'll call you within 24 hours<br>to discuss your painting project</p>
+            
+            <div class="next-steps">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-text">
+                        <strong>Within 24 hours:</strong> A member of our team will call to discuss your painting project and schedule a consultation
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-text">
+                        <strong>Free consultation:</strong> We'll visit your home to assess the project scope and your specific needs
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-text">
+                        <strong>Detailed estimate:</strong> You'll receive a comprehensive quote with multiple options and transparent pricing
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-card-title">What's Next:</div>
+                <div class="contact-phone">We'll Call You Soon</div>
+                <div class="contact-note">A.G. Williams Painting - Your local painting experts</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <div class="loading-text">A member of our team is reviewing your details...</div>
+    </div>
+
+    <script>
+        // Initialize dataLayer
+        window.dataLayer = window.dataLayer || [];
+
+        // SHA256 hashing function for enhanced conversions
+        async function hashString(string) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(string.toLowerCase().trim());
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            return hashHex;
+        }
+
+        // Enhanced conversion data formatter
+        async function prepareEnhancedConversionData(formData) {
+            const email = formData.email.toLowerCase().trim();
+            const phone = formData.phone.replace(/\D/g, ''); // Remove non-digits
+            const fullName = formData.fullName.trim();
+            const nameParts = fullName.split(' ');
+            const firstName = nameParts[0] || '';
+            const lastName = nameParts.slice(1).join(' ') || '';
+            const postalCode = formData.postalCode.trim();
+            
+            // Hash sensitive data
+            const hashedEmail = await hashString(email);
+            const hashedPhone = await hashString('+1' + phone); // Add US country code
+            
+            return {
+                // Raw data for GTM variables
+                email: email,
+                phone: phone,
+                fullName: fullName,
+                firstName: firstName,
+                lastName: lastName,
+                postalCode: postalCode,
+                
+                // Hashed data for enhanced conversions
+                enhanced_conversion_data: {
+                    email: hashedEmail,
+                    phone_number: hashedPhone,
+                    address: {
+                        first_name: firstName,
+                        last_name: lastName,
+                        postal_code: postalCode,
+                        country: 'US'
+                    }
+                }
+            };
+        }
+
+        // Validate form data before tracking conversion
+        function isValidFormData(formData) {
+            // Email validation - more lenient for custom domains
+            const email = formData.email.trim();
+            if (!email.includes('@') || !email.includes('.') || email.length < 5) return false;
+            
+            // Phone validation (10 digits)
+            const phoneDigits = formData.phone.replace(/\D/g, '');
+            if (phoneDigits.length !== 10) return false;
+            
+            // Name validation (at least 2 characters)
+            if (!formData.fullName || formData.fullName.trim().length < 2) return false;
+            
+            // ZIP validation (exactly 5 digits)
+            const zip = formData.postalCode.trim();
+            if (!/^\d{5}$/.test(zip)) return false;
+            
+            return true;
+        }
+
+        // Configuration
+        const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xkgbbdaj';
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // One-time submission check temporarily disabled for testing
+            
+            initializeForm();
+            restorePartialSubmission();
+            trackFieldAbandonment();
+            
+            // Track quality signals to prevent spam
+            let interactionCount = 0;
+            let timeOnPage = 0;
+            let hasInteracted = false;
+            
+            // Track time on page
+            setInterval(() => {
+                timeOnPage++;
+            }, 1000);
+            
+            // Track real user interactions
+            ['click', 'touchstart', 'keydown'].forEach(eventType => {
+                document.addEventListener(eventType, function() {
+                    hasInteracted = true;
+                    interactionCount++;
+                }, { once: true });
+            });
+            
+            // Add interaction data to dataLayer before conversion
+            window.addEventListener('beforeunload', function() {
+                if (window.dataLayer) {
+                    window.dataLayer.push({
+                        'user_engagement': {
+                            'time_on_page': timeOnPage,
+                            'interaction_count': interactionCount,
+                            'has_interacted': hasInteracted
+                        }
+                    });
+                }
+            });
+        });
+        
+        // Initialize form
+        function initializeForm() {
+            const form = document.getElementById('paintingEstimateForm');
+            const inputs = form.querySelectorAll('input');
+            const phoneInput = document.getElementById('phone');
+            const postalCodeInput = document.getElementById('postalCode');
+            
+            // Real-time validation with improved email handling
+            inputs.forEach(input => {
+                input.addEventListener('input', () => {
+                    // For email, validate on every keystroke after @ symbol
+                    if (input.id === 'email') {
+                        const value = input.value;
+                        if (value.includes('@') && value.includes('.')) {
+                            validateField(input);
+                        } else {
+                            input.classList.remove('success', 'error');
+                        }
+                    } else {
+                        validateField(input);
+                    }
+                });
+                
+                input.addEventListener('blur', () => {
+                    validateField(input);
+                    savePartialSubmission();
+                });
+                
+                // Special handling for email field paste events
+                if (input.id === 'email') {
+                    input.addEventListener('paste', (e) => {
+                        setTimeout(() => validateField(input), 50);
+                    });
+                }
+            });
+            
+            // Phone formatting - improved to handle autofill and +1 prefix
+            phoneInput.addEventListener('focus', function() {
+                // Change placeholder to show format when focused
+                if (!this.value) {
+                    this.placeholder = '(___) ___-____';
+                }
+            });
+            
+            phoneInput.addEventListener('blur', function() {
+                // Restore original placeholder when empty and blurred
+                if (!this.value) {
+                    this.placeholder = 'Phone Number (for your estimate)';
+                }
+            });
+            
+            phoneInput.addEventListener('input', function(e) {
+                let input = e.target.value;
+                
+                // Remove all non-digits first
+                let digits = input.replace(/\D/g, '');
+                
+                // Handle +1 prefix (remove it)
+                if (digits.startsWith('1') && digits.length === 11) {
+                    digits = digits.substring(1);
+                }
+                
+                // Limit to 10 digits
+                digits = digits.substring(0, 10);
+                
+                // Format the number
+                let formatted = '';
+                if (digits.length > 0) {
+                    if (digits.length <= 3) {
+                        formatted = `(${digits}`;
+                    } else if (digits.length <= 6) {
+                        formatted = `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+                    } else {
+                        formatted = `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
+                    }
+                }
+                
+                e.target.value = formatted;
+                
+                // Validate in real-time
+                if (digits.length === 10) {
+                    validateField(e.target);
+                }
+            });
+            
+            // ZIP code formatting
+            postalCodeInput.addEventListener('input', function(e) {
+                // Remove non-digits
+                let value = e.target.value.replace(/\D/g, '');
+                // Limit to 5 digits
+                value = value.substring(0, 5);
+                e.target.value = value;
+                
+                // Validate when complete
+                if (value.length === 5) {
+                    validateField(e.target);
+                }
+            });
+            
+            // Form submission
+            form.addEventListener('submit', handleSubmit);
+        }
+        
+        // Field validation
+        function validateField(input) {
+            const value = input.value.trim();
+            let isValid = false;
+            
+            switch(input.id) {
+                case 'fullName':
+                    isValid = value.length >= 2;
+                    break;
+                case 'email':
+                    // More lenient email validation - just needs @ and .
+                    isValid = value.includes('@') && value.includes('.') && value.length >= 5;
+                    break;
+                case 'phone':
+                    isValid = value.replace(/\D/g, '').length === 10;
+                    break;
+                case 'postalCode':
+                    isValid = /^\d{5}$/.test(value);
+                    break;
+            }
+            
+            if (isValid) {
+                input.classList.remove('error');
+                input.classList.add('success');
+                hideError(input.id);
+            } else if (value.length > 0) {
+                input.classList.add('error');
+                input.classList.remove('success');
+            } else {
+                input.classList.remove('error', 'success');
+            }
+            
+            return isValid;
+        }
+        
+        // Handle form submission
+        async function handleSubmit(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const submitBtn = document.getElementById('submitBtn');
+            
+            // One-time submission check temporarily disabled
+            
+            const inputs = form.querySelectorAll('input');
+            let isValid = true;
+            
+            // Validate all fields
+            inputs.forEach(input => {
+                if (!validateField(input)) {
+                    isValid = false;
+                    showError(input.id);
+                }
+            });
+            
+            if (!isValid) return;
+            
+            // Disable submit button immediately
+            submitBtn.disabled = true;
+            
+            // Show loading overlay
+            document.getElementById('loadingOverlay').classList.add('show');
+            
+            // Prepare form data
+            const formData = new FormData();
+            const formDataObj = {
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                postalCode: document.getElementById('postalCode').value
+            };
+            
+            // Validate data quality
+            if (!isValidFormData(formDataObj)) {
+                submitBtn.disabled = false;
+                document.getElementById('loadingOverlay').classList.remove('show');
+                alert('Please check your information and try again.');
+                return;
+            }
+            
+            // Add to FormData for submission
+            formData.append('name', formDataObj.fullName);
+            formData.append('email', formDataObj.email);
+            formData.append('phone', formDataObj.phone);
+            formData.append('zipCode', formDataObj.postalCode);
+            formData.append('timestamp', new Date().toISOString());
+            formData.append('service', 'painting_estimate');
+            formData.append('location', 'westchester_fairfield');
+            
+            // Track form submission attempt (not conversion yet)
+            window.dataLayer.push({
+                'event': 'form_submission_attempt',
+                'form_id': 'painting_estimate_form'
+            });
+            
+            try {
+                const response = await fetch(FORMSPREE_ENDPOINT, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // One-time submission tracking temporarily disabled
+                    
+                    // Clear saved data
+                    localStorage.removeItem('partialSubmission');
+                    
+                    // Prepare enhanced conversion data
+                    const enhancedData = await prepareEnhancedConversionData(formDataObj);
+                    
+                    // IMPORTANT: Push to parent window's dataLayer if in iframe
+                    const targetWindow = window.parent || window;
+                    
+                    // Ensure dataLayer exists
+                    targetWindow.dataLayer = targetWindow.dataLayer || [];
+                    
+                    // Push the conversion event
+                    targetWindow.dataLayer.push({
+                        'event': 'painting_estimate_conversion',  // This MUST match your GTM trigger
+                        'conversion_data': {
+                            'conversion_id': '10793601697',
+                            'conversion_label': 'C2T0CPmbmNIZEKGV5Zoo',
+                            'value': 0,
+                            'currency': 'USD'
+                        },
+                        'user_data': {
+                            'email': enhancedData.email,
+                            'phone': enhancedData.phone,
+                            'full_name': enhancedData.fullName,
+                            'first_name': enhancedData.firstName,
+                            'last_name': enhancedData.lastName,
+                            'postal_code': enhancedData.postalCode
+                        },
+                        'enhanced_conversions': enhancedData.enhanced_conversion_data
+                    });
+                    
+                    // Also log to console for debugging
+                    console.log('Conversion event pushed:', 'painting_estimate_conversion');
+                    console.log('DataLayer after push:', targetWindow.dataLayer);
+                    
+                    // Also track for GA4
+                    if (window.gtag) {
+                        window.gtag('event', 'generate_lead', {
+                            'currency': 'USD',
+                            'value': 0,
+                            'lead_source': 'painting_estimate_form'
+                        });
+                    }
+                    
+                    // Show success page
+                    setTimeout(() => {
+                        document.getElementById('loadingOverlay').classList.remove('show');
+                        document.getElementById('formPage').classList.add('hide');
+                        document.getElementById('successPage').classList.add('show');
+                        
+                        // Track success page view
+                        targetWindow.dataLayer.push({
+                            'event': 'virtual_page_view',
+                            'page_path': '/painting-estimate-success',
+                            'page_title': 'Painting Estimate Form Success'
+                        });
+                        
+                        // Scroll to top
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }, 1500);
+                } else {
+                    submitBtn.disabled = false;
+                    throw new Error('Submission failed');
+                }
+            } catch (error) {
+                console.error('Submission error:', error);
+                document.getElementById('loadingOverlay').classList.remove('show');
+                submitBtn.disabled = false;
+                alert('Sorry, there was an error. Please try again.');
+                
+                // Track error
+                window.dataLayer.push({
+                    'event': 'form_error',
+                    'error_message': error.message,
+                    'form_id': 'painting_estimate_form'
+                });
+            }
+        }
+        
+        // Save partial submission
+        function savePartialSubmission() {
+            const data = {
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                postalCode: document.getElementById('postalCode').value,
+                timestamp: new Date().toISOString()
+            };
+            
+            localStorage.setItem('partialSubmission', JSON.stringify(data));
+        }
+        
+        // Restore partial submission
+        function restorePartialSubmission() {
+            const saved = localStorage.getItem('partialSubmission');
+            if (saved) {
+                try {
+                    const data = JSON.parse(saved);
+                    
+                    // Only restore if less than 24 hours old
+                    const savedTime = new Date(data.timestamp);
+                    const now = new Date();
+                    const hoursDiff = (now - savedTime) / (1000 * 60 * 60);
+                    
+                    if (hoursDiff < 24) {
+                        if (data.fullName) document.getElementById('fullName').value = data.fullName;
+                        if (data.email) document.getElementById('email').value = data.email;
+                        if (data.phone) document.getElementById('phone').value = data.phone;
+                        if (data.postalCode) document.getElementById('postalCode').value = data.postalCode;
+                        
+                        // Validate restored fields
+                        ['fullName', 'email', 'phone', 'postalCode'].forEach(id => {
+                            const input = document.getElementById(id);
+                            if (input.value) validateField(input);
+                        });
+                    }
+                } catch (e) {
+                    console.error('Error restoring form data:', e);
+                }
+            }
+        }
+        
+        // Track field abandonment
+        function trackFieldAbandonment() {
+            const inputs = document.querySelectorAll('input');
+            
+            inputs.forEach(input => {
+                let hasInteracted = false;
+                
+                input.addEventListener('focus', () => {
+                    hasInteracted = true;
+                    window.dataLayer.push({
+                        'event': 'field_focused',
+                        'field_name': input.id,
+                        'form_id': 'painting_estimate_form'
+                    });
+                });
+                
+                input.addEventListener('blur', () => {
+                    if (hasInteracted && !input.value.trim()) {
+                        window.dataLayer.push({
+                            'event': 'field_abandoned',
+                            'field_name': input.id,
+                            'form_id': 'painting_estimate_form'
+                        });
+                    }
+                });
+            });
+        }
+        
+        // Error handling
+        function showError(inputId) {
+            const errorEl = document.getElementById(inputId + 'Error');
+            if (errorEl) errorEl.classList.add('show');
+        }
+        
+        function hideError(inputId) {
+            const errorEl = document.getElementById(inputId + 'Error');
+            if (errorEl) errorEl.classList.remove('show');
+        }
+        
+        // GA4 event tracking helper (keeping for backward compatibility)
+        function pushGA4Event(eventName, parameters = {}) {
+            if (window.gtag) {
+                window.gtag('event', eventName, parameters);
+            }
+        }
+    </script>
+</body>
+</html>
